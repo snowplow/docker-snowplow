@@ -1,0 +1,57 @@
+version: '3'
+services:
+    stream-collector:
+        container_name: stream-collector
+        image: snowplow/snowplow
+        restart: always
+        depends_on:
+          - kafka
+        ports:
+         - "80:80"
+        volumes:
+         - "./config/collector.conf:/opt/snowplow/conf/collector.conf"
+        logging:
+          options:
+            max-size: 1G
+        entrypoint:
+          - java
+          - -jar
+          - snowplow-stream-collector.jar
+          - --config
+          - /opt/snowplow/conf/collector.conf
+    stream-enrich:
+        container_name: stream-enrich
+        image: snowplow/snowplow
+        restart: always
+        depends_on:
+          - kafka
+        volumes:
+         - "./config/enrich.conf:/opt/snowplow/conf/enrich.conf"
+         - "./config/resolver.json:/opt/snowplow/conf/resolver.json"
+        logging:
+          options:
+            max-size: 1G
+        entrypoint:
+          - java
+          - -jar
+          - snowplow-stream-enrich.jar
+          - --config
+          - /opt/snowplow/conf/enrich.conf
+          - --resolver
+          - file:/opt/snowplow/conf/resolver.json
+          - --enrichments
+          - file:/opt/snowplow/enrichments/
+    kafka:
+        container_name: kafka
+        image: spotify/kafka
+        hostname: kafka
+        restart: always
+        environment:
+          - ADVERTISED_HOST=kafka
+          - ADVERTISED_PORT=9092
+        ports:
+          - "9092:9092"
+          - "2181:2181"
+        logging:
+          options:
+            max-size: 1G
