@@ -1,0 +1,36 @@
+version: '3'
+services:
+    stream-iglu:
+        container_name: stream-iglu
+        image: stream-iglu
+        restart: always
+        depends_on: 
+         - postgres
+        ports:
+         - "8080:8080"
+        volumes:
+         - "./configs/iglu.conf:/opt/iglu/conf/iglu.conf"
+        logging:
+          options:
+            max-size: 1G
+        environment:
+          - API_KEY=<your super API key>
+        entrypoint:
+          - java
+          - -Dconfig.file=/opt/iglu/conf/iglu.conf
+          - -jar
+          - iglu_server.jar
+          - com.snowplowanalytics.iglu.server.Boot
+    postgres:
+        container_name: postgres
+        image: postgres:latest
+        restart: always
+        environment:
+           - POSTGRES_USER=ben
+           - POSTGRES_PASSWORD=ben
+           - POSTGRES_DB=iglu
+        ports:
+         - "5432:5432"
+        logging:
+          options:
+            max-size: 1G
