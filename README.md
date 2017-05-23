@@ -11,6 +11,7 @@ This repository contains the Docker images for the following Snowplow components
 - [Stream Enrich][se]
 - [Elasticsearch Loader][es]
 - [S3 Loader][s3]
+- [Iglu Server][iglu-server]
 
 They are published in the [`snowplow-docker-registry.bintray.io`][registry] docker registry.
 
@@ -30,6 +31,9 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:0.
 
 # S3 Loader image
 docker pull snowplow-docker-registry.bintray.io/snowplow/s3-loader:0.6.0
+
+# Iglu Server image
+docker pull snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.3.0
 ```
 
 ## Building
@@ -51,6 +55,9 @@ docker build -t snowplow/elasticsearch-loader:0.10.1 elasticsearch-loader/0.10.1
 
 # S3 Loader image
 docker build -t snowplow/s3-loader:0.6.0 s3-loader/0.6.0
+
+# Iglu Server image
+docker build -t snowplow/iglu-server:0.3.0 iglu-server/0.3.0
 ```
 
 ## Running
@@ -62,6 +69,7 @@ following locations:
 - [Stream Enrich configuration][se-config]
 - [Elasticsearch Loader configuration][es-config]
 - [S3 Loader configuration][s3-config]
+- [Iglu Server configuration][iglu-server-config]
 
 Next, you can run a container for each component by mounting your configuration directory:
 
@@ -96,6 +104,13 @@ docker run \
   snowplow/s3-loader:0.6.0 \ # if you have built the image
   # snowplow-docker-registry.bintray.io/snowplow/s3-loader:0.6.0 if you have pulled the image
   --config /snowplow/config/config.hocon
+
+# Iglu Server
+docker run \
+  -v ${PWD}/iglu-server-config:/snowplow/config \
+  snowplow/iglu-server:0.3.0 \ # if you have built the image
+  # snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.3.0 if you have pulled the image
+  --config /snowplow/config/application.conf
 ```
 
 You can find more information in the readme for each image:
@@ -104,8 +119,10 @@ You can find more information in the readme for each image:
 - [Stream Enrich readme][se-readme]
 - [Elasticsearch Loader readme][es-readme]
 - [S3 Loader readme][s3-readme]
+- [Iglu Server readme][iglu-server-readme]
 
-There is also a Docker Compose example in the [example folder][example].
+There is a Docker Compose example in the [example folder][example]. Iglu Server also
+has a Docker Compose example in a [separate example folder][iglu-example].
 
 ## Find out more
 
@@ -131,18 +148,22 @@ limitations under the License.
 [se]: https://github.com/snowplow/snowplow/tree/master/3-enrich/stream-enrich
 [es]: https://github.com/snowplow/snowplow-elasticsearch-loader/
 [s3]: https://github.com/snowplow/snowplow-s3-loader/
+[iglu-server]: https://github.com/snowplow/iglu/tree/master/2-repositories/iglu-server
 
 [ssc-config]: https://github.com/snowplow/snowplow/blob/master/2-collectors/scala-stream-collector/examples/config.hocon.sample
 [se-config]: https://github.com/snowplow/snowplow/blob/master/3-enrich/stream-enrich/examples/config.hocon.sample
 [es-config]: https://github.com/snowplow/snowplow-elasticsearch-loader/blob/master/examples/config.hocon.sample
 [s3-config]: https://github.com/snowplow/snowplow-s3-loader/blob/master/examples/config.hocon.sample
+[iglu-server-config]: https://github.com/snowplow/snowplow-docker/blob/master/iglu-server/example/config/application.conf
 
 [ssc-readme]: https://github.com/snowplow/snowplow-docker/tree/master/scala-stream-collector
 [se-readme]: https://github.com/snowplow/snowplow-docker/tree/master/stream-enrich
 [es-readme]: https://github.com/snowplow/snowplow-docker/tree/master/elasticsearch-loader
 [s3-readme]: https://github.com/snowplow/snowplow-docker/tree/master/s3-loader
+[iglu-server-readme]: https://github.com/snowplow/snowplow-docker/tree/master/iglu-server
 
 [example]: https://github.com/snowplow/snowplow-docker/tree/master/example
+[iglu-example]: https://github.com/snowplow/snowplow-docker/tree/master/iglu-server/example
 
 [registry]: https://bintray.com/snowplow/registry
 
