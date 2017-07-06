@@ -1,0 +1,64 @@
+collector {
+  interface = "0.0.0.0"
+  port = "80"
+  production = true
+  p3p {
+    policyref = "/w3c/p3p.xml"
+    CP = "NOI DSP COR NID PSA OUR IND COM NAV STA"
+  }
+  cookie {
+    enabled = true
+    expiration = "365"
+    name = 'sp'
+    domain = "${SNOWPLOW_HOST}.${SNOWPLOW_DOMAIN}"
+  }
+
+  sink {
+    enabled = "kafka"
+
+    kinesis {
+      thread-pool-size: 10
+      aws {
+        access-key: "iam"
+        secret-key: "iam"
+      }
+      stream {
+        region: "collectorSinkKinesisStreamRegion"
+        good: "collectorKinesisStreamGoodName"
+        bad: "collectorKinesisStreamBadName"
+      }
+      backoffPolicy: {
+        minBackoff: 20
+        maxBackoff: 20
+      }
+    }
+
+    kafka {
+      brokers: "kafka:9092"
+      topic {
+        good: "collector-payloads"
+        bad: "bad-1"
+      }
+    }
+
+    buffer {
+      byte-limit: 5000
+      record-limit: 5000
+      time-limit: 5000
+    }
+  }
+}
+
+akka {
+  loglevel = OFF # 'OFF' for no logging, 'DEBUG' for all logging.
+  loggers = ["akka.event.slf4j.Slf4jLogger"]
+}
+
+spray.can.server {
+  remote-address-header = on
+  uri-parsing-mode = relaxed
+  raw-request-uri-header = on
+  parsing {
+    max-uri-length = 32768
+  }
+}
