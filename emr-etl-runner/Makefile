@@ -40,6 +40,20 @@ rundockerwtmp:
 	--env-file=env \
 	-t $(TAG)
 
+# run a container in debug
+# run everything else
+debug: build rm rundockerdebug
+
+rundockerdebug:
+	$(eval TMP := $(shell mktemp -d --suffix=DOCKERTMP))
+	$(eval NAME := $(shell cat NAME))
+	$(eval TAG := $(shell cat TAG))
+	@docker run --name=$(NAME) \
+	--cidfile="cid" \
+	-v $(TMP):/tmp \
+	--env-file=env \
+	-t $(TAG) /bin/sh
+
 # pull the latest copy from docker hub
 pull:
 	docker pull `cat TAG`
@@ -67,3 +81,4 @@ logs:
 
 env:
 	cp -i emr.env.example env
+

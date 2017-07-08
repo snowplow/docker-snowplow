@@ -2,7 +2,7 @@
 
 Snowplow EMRETL runner
 
-### Configuration
+## Configuration
 
 `cp -i emr.env.example env`
 
@@ -10,4 +10,4 @@ Snowplow EMRETL runner
 
 ### Usage
 
-`make build` and `make run`
+`make pull` and `make run`

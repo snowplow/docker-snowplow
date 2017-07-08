@@ -1,0 +1,11 @@
+{
+    "schema": "iglu:com.snowplowanalytics.snowplow.storage/amazon_dynamodb_config/jsonschema/1-0-0",
+    "data": {
+        "name": "AWS DynamoDB duplicates storage",
+        "accessKeyId": "$DYNAMODB_SCHEMA_DATA_ACCESS_KEY_ID",
+        "secretAccessKey": "$DYNAMODB_SCHEMA_DATA_SECRET_KEY_ID",
+        "awsRegion": "$DYNAMODB_SCHEMA_DATA_AWS_REGION",
+        "dynamodbTable": "$DYNAMODB_SCHEMA_DATA_TABLE",
+        "purpose": "DUPLICATE_TRACKING"
+    }
+}

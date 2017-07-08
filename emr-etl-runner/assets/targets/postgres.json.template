@@ -1,0 +1,14 @@
+{
+    "schema": "iglu:com.snowplowanalytics.snowplow.storage/postgresql_config/jsonschema/1-0-0",
+    "data": {
+        "name": "PostgreSQL enriched events storage",
+        "host": "$PG_SCHEMA_DATA_HOST",
+        "database": "$PG_SCHEMA_DATA_DB",
+        "port": 5432,
+        "sslMode": "DISABLE",
+        "username": "$PG_SCHEMA_DATA_USER",
+        "password": "$PG_SCHEMA_DATA_PW",
+        "schema": "atomic",
+        "purpose": "ENRICHED_EVENTS"
+    }
+}

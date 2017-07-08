@@ -1,0 +1,16 @@
+{
+    "schema": "iglu:com.snowplowanalytics.snowplow.storage/redshift_config/jsonschema/1-0-0",
+    "data": {
+        "name": "AWS Redshift enriched events storage",
+        "host": "$REDSHIFT_SCHEMA_DATA_HOST",
+        "database": "$REDSHIFT_SCHEMA_DATA_DB",
+        "port": 5439,
+        "sslMode": "DISABLE",
+        "username": "$REDSHIFT_SCHEMA_DATA_USER",
+        "password": "$REDSHIFT_SCHEMA_DATA_PW",
+        "schema": "atomic",
+        "maxError": 1,
+        "compRows": 20000,
+        "purpose": "ENRICHED_EVENTS"
+    }
+}
