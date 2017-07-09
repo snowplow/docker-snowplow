@@ -13,8 +13,8 @@ rm -rf /var/cache/apk/* && \
 
 # Install sbt
 echo 'curling' && \
-# curl -sL "https://github.com/sbt/sbt/releases/download/v$SBT_VERSION/sbt-$SBT_VERSION.tgz" | gunzip | tar -xv -C /usr/local && \
-curl -sL "https://github.com/sbt/sbt/archive/v$SBT_VERSION.tar.gz" | gunzip | tar -xv -C /usr/local && \
+curl -sL "https://github.com/sbt/sbt/releases/download/v$SBT_VERSION/sbt-$SBT_VERSION.tgz" | gunzip | tar -xv -C /usr/local && \
+# curl -sL "https://github.com/sbt/sbt/archive/v$SBT_VERSION.tar.gz" | gunzip | tar -xv -C /usr/local && \
 echo -ne "- with sbt $SBT_VERSION\n" >> /root/.built &&\
 apk del curl && \
 
