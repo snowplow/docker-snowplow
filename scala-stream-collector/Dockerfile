@@ -2,7 +2,7 @@ FROM java:8-alpine
 
 ENV SCALA_COLLECTOR=20170611 \
 BUILD_PACKAGES='bash curl-dev git curl ca-certificates gettext' \
-SBT_VERSION=0.13.15 \
+SBT_VERSION=0.13.0 \
 SBT_HOME=/usr/local/sbt \
 PATH=${PATH}:${SBT_HOME}/bin
 
