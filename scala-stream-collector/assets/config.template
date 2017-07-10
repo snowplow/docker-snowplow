@@ -56,9 +56,9 @@ akka {
 
 spray.can.server {
   remote-address-header = on
-  uri-parsing-mode = relaxed
   raw-request-uri-header = on
   parsing {
     max-uri-length = 32768
+    uri-parsing-mode = relaxed
   }
 }
