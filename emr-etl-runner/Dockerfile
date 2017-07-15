@@ -5,7 +5,7 @@ ENV PLAIN_OF_JARS=20170705 \
 LANG=en_US.UTF-8
 
 RUN apt-get update \
-  && apt-get install -yqq gettext-base mlocate \
+  && apt-get install -yqq gettext-base \
   && apt-get autoremove -qqy \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
