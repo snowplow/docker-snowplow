@@ -15,7 +15,7 @@ RUN apk update && apk upgrade \
   && wget -q http://dl.bintray.com/snowplow/snowplow-generic/${ARCHIVE} \
   && unzip ${ARCHIVE} \
   && rm ${ARCHIVE} \
-  && mv ${ARTIFACT} snowplow-stream-collector
+  && mv ${ARTIFACT} scala-stream-collector
 
 COPY assets /assets
 
