@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 cd /usr/local/scalacollector
 envsubst < /assets/config.template > collector.config
