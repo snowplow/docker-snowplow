@@ -9,12 +9,12 @@ ARCHIVE="${ARTIFACT}.zip"
 WORKDIR /usr/local/scalacollector
 
 RUN apk update && apk upgrade \
-&& apk add --update $BUILD_PACKAGES \
-&& rm -rf /var/cache/apk/* \
-&& wget -q http://dl.bintray.com/snowplow/snowplow-generic/${ARCHIVE} \
-&& unzip ${ARCHIVE} \
-&& rm ${ARCHIVE} \
-&& mv ${ARTIFACT} snowplow-stream-collector
+  && apk add --update $BUILD_PACKAGES \
+  && rm -rf /var/cache/apk/* \
+  && wget -q http://dl.bintray.com/snowplow/snowplow-generic/${ARCHIVE} \
+  && unzip ${ARCHIVE} \
+  && rm ${ARCHIVE} \
+  && mv ${ARTIFACT} snowplow-stream-collector
 
 COPY assets /assets
 
