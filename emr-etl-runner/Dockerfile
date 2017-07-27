@@ -1,9 +1,9 @@
 FROM jruby:9.1
 MAINTAINER Josh Cox <josh 'at' webhosting.coop>
 
-ENV EMR_RELEASE=PLAIN_OF_JARS \
+ENV EMR_RELEASE=LASCAUX \
 LANG=en_US.UTF-8 \
-EMR_DL_ZIP=snowplow_emr_r89_plain_of_jars.zip \
+EMR_DL_ZIP=snowplow_emr_r90_lascaux.zip \
 EMR_DL_URL=http://dl.bintray.com/snowplow/snowplow-generic/
 
 
