@@ -8,5 +8,5 @@ fi
 
 # Make sure we run the collector as the snowplow user
 exec su-exec snowplow:snowplow /usr/bin/java \
-  $SP_JAVA_OPTS \
+  $SP_JAVA_OPTS -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap \
   -jar ${SNOWPLOW_BIN_PATH}/snowplow-stream-collector-${COLLECTOR_VERSION}.jar "$@"
