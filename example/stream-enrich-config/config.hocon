@@ -1,0 +1,43 @@
+enrich {
+  source = kinesis
+  sink = kinesis
+
+  aws {
+    accessKey = default
+    secretKey = default
+  }
+
+  streams {
+    in.raw = snowplow-raw
+
+    out {
+      enriched = snowplow-enriched
+      bad = snowplow-bad
+      partitionKey = other
+    }
+
+    kinesis {
+      region = us-east-1
+      maxRecords = 2000
+      initialPosition = TRIM_HORIZON
+
+      backoffPolicy {
+        minBackoff = 200
+        maxBackoff = 1000
+      }
+    }
+
+    kafka {
+      brokers = "kafkaBrokers"
+      retries = 0
+    }
+
+    buffer {
+      byteLimit = 100000
+      recordLimit = 40
+      timeLimit = 1000
+    }
+
+    appName = snowplow-enrich
+  }
+}
