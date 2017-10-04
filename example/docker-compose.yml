@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  scala-stream-collector:
+    image: snowplow/scala-stream-collector:0.10.0
+    ports:
+      - "80:80"
+    volumes:
+      - ./scala-stream-collector-config:/snowplow/config
+    logging:
+      options:
+        max-size: 1M
+        max-file: 10
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      - "SP_JAVA_OPTS=-Xms512m -Xmx512m"
+    command: [ "--config", "/snowplow/config/config.hocon" ]
+
+  stream-enrich:
+    image: snowplow/stream-enrich:0.11.0
+    volumes:
+      - ./stream-enrich-config:/snowplow/config
+    logging:
+      options:
+        max-size: 1M
+        max-file: 10
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    environment:
+      - "SP_JAVA_OPTS=-Xms512m -Xmx512m"
+    command: [
+      "--config", "/snowplow/config/config.hocon",
+      "--resolver", "file:/snowplow/config/resolver.json",
+      "--enrichments", "file:/snowplow/config/enrichments",
+      "--force-ip-lookups-download"
+    ]
