@@ -1,0 +1,11 @@
+Release 1 (2017-10-xx)
+----------------------
+Add Dockerfile for Scala Stream Collector (#6)
+Add Dockerfile for Stream Enrich (#7)
+Add Dockerfile for Elasticsearch Loader (#5)
+Add Dockerfile for S3 Loader (#1)
+Add base image (#4)
+Provide a Docker Compose example (#15)
+Ensure the JVM process adheres to CPU and memory limits imposed by Docker (#21)
+Add CI/CD to deploy all images into our Bintray (#16)
+Add Bintray credentials to .travis.yml (#20)
