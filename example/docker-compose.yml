@@ -2,7 +2,7 @@ version: "3"
 
 services:
   scala-stream-collector:
-    image: snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.10.0
+    image: snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.11.0
     ports:
       - "80:80"
     volumes:
