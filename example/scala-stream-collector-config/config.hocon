@@ -20,15 +20,15 @@ collector {
     fallbackNetworkUserId = "00000000-0000-4000-A000-000000000000"
   }
 
-  sink = kinesis
-
   streams {
     good = snowplow-raw
     bad = snowplow-bad
 
     useIpAddressAsPartitionKey = false
 
-    kinesis {
+    sink {
+      enabled = kinesis
+
       region = us-east-1
       threadPoolSize = 4
 
@@ -41,11 +41,6 @@ collector {
         minBackoff = 200
         maxBackoff = 1000
       }
-    }
-
-    kafka {
-      brokers = "kafkaBrokers"
-      retries = 0
     }
 
     buffer {
