@@ -11,7 +11,7 @@ env:
   matrix:
   - IMG=base
   - IMG=scala-stream-collector/0.10.0
-  - IMG=stream-enrich/0.12.0
+  - IMG=stream-enrich/0.12.0-rc2
   - IMG=s3-loader/0.6.0
   - IMG=elasticsearch-loader/0.10.1
   global:
