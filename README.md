@@ -1,5 +1,8 @@
 # Snowplow Docker
 
+[![Build Status][travis-image]][travis]
+[![License][license-image]][license]
+
 ## Introduction
 
 This repository contains the Docker images for the following Snowplow components:
@@ -150,4 +153,8 @@ limitations under the License.
 [setup-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/setup.png
 [roadmap-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/roadmap.png
 
+[travis-image]: https://travis-ci.org/snowplow/snowplow-docker.png?branch=master
+[travis]: http://travis-ci.org/snowplow/snowplow-docker
+
+[license-image]: http://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: http://www.apache.org/licenses/LICENSE-2.0
