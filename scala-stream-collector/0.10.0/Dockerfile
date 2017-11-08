@@ -23,4 +23,4 @@ EXPOSE 80
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 
-CMD [ "--usage" ]
+CMD [ "--help" ]
