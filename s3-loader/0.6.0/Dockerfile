@@ -13,7 +13,8 @@ RUN mkdir -p /tmp/build && \
     wget -q http://dl.bintray.com/snowplow/snowplow-generic/${ARCHIVE} && \
     unzip -d ${SNOWPLOW_BIN_PATH} ${ARCHIVE} && \
     cd /tmp && \
-    rm -rf /tmp/build
+    rm -rf /tmp/build && \
+    apk add --no-cache lzo
 
 # Defines an entrypoint script delegating the lauching of the loader to the snowplow user.
 # The script uses dumb-init as the top-level process.
