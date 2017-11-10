@@ -14,7 +14,7 @@
         }
       },
       {
-        "name": "Iglu Central - Mirror 01",
+        "name": "Iglu Central - GCP Mirror",
         "priority": 1,
         "vendorPrefixes": [ "com.snowplowanalytics" ],
         "connection": {
