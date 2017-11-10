@@ -2,10 +2,10 @@ FROM snowplow-docker-registry.bintray.io/snowplow/base:0.1.0
 LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 # The version of the collector to download.
-ENV COLLECTOR_VERSION="0.11.0_rc3"
+ENV COLLECTOR_VERSION="0.11.0"
 
 # The name of the archive to download.
-ENV ARCHIVE="snowplow_scala_stream_collector_${COLLECTOR_VERSION}.zip"
+ENV ARCHIVE="snowplow_scala_stream_collector_${COLLECTOR_VERSION}_rc4.zip"
 
 # Install the Scala Stream Collector.
 RUN mkdir -p /tmp/build && \
@@ -23,4 +23,4 @@ EXPOSE 80
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 
-CMD [ "--usage" ]
+CMD [ "--help" ]
