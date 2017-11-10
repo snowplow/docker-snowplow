@@ -21,26 +21,15 @@ collector {
   }
 
   streams {
-    good = snowplow-raw
-    bad = snowplow-bad
+    good = raw
+    bad = bad
 
     useIpAddressAsPartitionKey = false
 
     sink {
-      enabled = kinesis
-
-      region = us-east-1
-      threadPoolSize = 4
-
-      aws {
-        accessKey = default
-        secretKey = default
-      }
-
-      backoffPolicy {
-        minBackoff = 200
-        maxBackoff = 1000
-      }
+      enabled = nsq
+      host = "nsqd"
+      port = 4150
     }
 
     buffer {
