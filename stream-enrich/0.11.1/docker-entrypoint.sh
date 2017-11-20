@@ -6,6 +6,9 @@ if [ "$(stat -c %u ${SNOWPLOW_CONFIG_PATH})" != "$(id -u snowplow)" ]; then
   chown snowplow:snowplow ${SNOWPLOW_CONFIG_PATH}
 fi
 
+# Needed because of SCE's ./ip_geo file
+cd $(eval echo ~snowplow)
+
 # Make sure we run the collector as the snowplow user
 exec su-exec snowplow:snowplow /usr/bin/java \
   $SP_JAVA_OPTS -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap \
