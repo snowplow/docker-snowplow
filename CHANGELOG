@@ -1,3 +1,13 @@
+Release 2 (2017-11-28)
+----------------------
+Stream Enrich 0.12.0 image (#24)
+Scala Stream Collector 0.11.0 image (#25)
+Rely on NSQ for the Docker Compose example (#27)
+Change directory when running Stream Enrich (#29)
+Install LZO as part of the S3 Loader image (#23)
+Replace default --usage flag by --help (#26)
+Travis badge (#22)
+
 Release 1 (2017-10-13)
 ----------------------
 Add Dockerfile for Scala Stream Collector (#6)
