@@ -12,4 +12,5 @@ cd $(eval echo ~snowplow)
 # Make sure we run the collector as the snowplow user
 exec su-exec snowplow:snowplow /usr/bin/java \
   $SP_JAVA_OPTS -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap \
+  -Dcom.amazonaws.sdk.disableCbor \
   -jar ${SNOWPLOW_BIN_PATH}/snowplow-stream-enrich-${ENRICH_VERSION}.jar "$@"

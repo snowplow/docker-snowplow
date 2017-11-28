@@ -1,8 +1,35 @@
 version: "3"
 
 services:
+  nsqlookupd:
+    image: nsqio/nsq
+    command: /nsqlookupd
+    ports:
+      - "4160:4160"
+      - "4161:4161"
+
+  nsqd:
+    image: nsqio/nsq
+    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "4150:4150"
+      - "4151:4151"
+
+  nsqadmin:
+    image: nsqio/nsq
+    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "4171:4171"
+
   scala-stream-collector:
-    image: snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.10.0
+    image: snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.11.0
+    command: [ "--config", "/snowplow/config/config.hocon" ]
+    depends_on:
+      - nsqd
     ports:
       - "80:80"
     volumes:
@@ -22,10 +49,17 @@ services:
         window: 120s
     environment:
       - "SP_JAVA_OPTS=-Xms512m -Xmx512m"
-    command: [ "--config", "/snowplow/config/config.hocon" ]
 
   stream-enrich:
-    image: snowplow-docker-registry.bintray.io/snowplow/stream-enrich:0.11.1
+    image: snowplow-docker-registry.bintray.io/snowplow/stream-enrich:0.12.0
+    command: [
+      "--config", "/snowplow/config/config.hocon",
+      "--resolver", "file:/snowplow/config/resolver.json",
+      "--enrichments", "file:/snowplow/config/enrichments",
+      "--force-ip-lookups-download"
+    ]
+    depends_on:
+      - scala-stream-collector
     volumes:
       - ./stream-enrich-config:/snowplow/config
     logging:
@@ -43,9 +77,3 @@ services:
         window: 120s
     environment:
       - "SP_JAVA_OPTS=-Xms512m -Xmx512m"
-    command: [
-      "--config", "/snowplow/config/config.hocon",
-      "--resolver", "file:/snowplow/config/resolver.json",
-      "--enrichments", "file:/snowplow/config/enrichments",
-      "--force-ip-lookups-download"
-    ]

@@ -1,6 +1,6 @@
 enrich {
-  source = kinesis
-  sink = kinesis
+  source = nsq
+  sink = nsq
 
   aws {
     accessKey = default
@@ -8,11 +8,11 @@ enrich {
   }
 
   streams {
-    in.raw = snowplow-raw
+    in.raw = raw
 
     out {
-      enriched = snowplow-enriched
-      bad = snowplow-bad
+      enriched = enriched
+      bad = bad
       partitionKey = other
     }
 
@@ -30,6 +30,13 @@ enrich {
     kafka {
       brokers = "kafkaBrokers"
       retries = 0
+    }
+
+    nsq {
+      rawChannel = enrich
+      host = nsqd
+      port = 4150
+      lookupPort = 4161
     }
 
     buffer {
