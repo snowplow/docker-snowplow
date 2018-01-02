@@ -5,7 +5,7 @@ LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 ENV COLLECTOR_VERSION="0.12.0"
 
 # The name of the archive to download.
-ENV ARCHIVE="snowplow_scala_stream_collector_${COLLECTOR_VERSION}.zip"
+ENV ARCHIVE="snowplow_scala_stream_collector_${COLLECTOR_VERSION}_rc1.zip"
 
 # Install the Scala Stream Collector.
 RUN mkdir -p /tmp/build && \
