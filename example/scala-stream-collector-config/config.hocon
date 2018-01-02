@@ -16,8 +16,14 @@ collector {
 
   cookieBounce {
     enabled = false
-    name = "n3pc"
+    name = n3pc
     fallbackNetworkUserId = "00000000-0000-4000-A000-000000000000"
+    forwardedProtocolHeader = "X-Forwarded-Proto"
+  }
+
+  redirectMacro {
+    enabled = false
+    placeholder = "[TOKEN]"
   }
 
   streams {

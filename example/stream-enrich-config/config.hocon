@@ -36,6 +36,7 @@ enrich {
       rawChannel = enrich
       host = nsqd
       port = 4150
+      lookupHost = nsqlookupd
       lookupPort = 4161
     }
 
