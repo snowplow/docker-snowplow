@@ -5,7 +5,7 @@ LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 ENV ENRICH_VERSION="0.13.0"
 
 # The name of the archive to download.
-ENV ARCHIVE="snowplow_stream_enrich_${ENRICH_VERSION}.zip"
+ENV ARCHIVE="snowplow_stream_enrich_${ENRICH_VERSION}_rc2.zip"
 
 # Install the Scala Stream Collector.
 RUN mkdir -p /tmp/build && \
