@@ -1,3 +1,9 @@
+Release 3 (2018-01-xx)
+----------------------
+Stream Enrich 0.13.0 image (#31)
+Scala Stream Collector 0.12.0 image (#30)
+Use SSC 0.12.0 and SE 0.13.0 in the Docker Compose example (#32)
+
 Release 2 (2017-11-28)
 ----------------------
 Stream Enrich 0.12.0 image (#24)
