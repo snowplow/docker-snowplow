@@ -4,25 +4,22 @@ This folder contains a Docker Compose example for the Snowplow realtime pipeline
 
 ## Introduction
 
-This Docker Compose example bundles the following components in two distinct containers:
+This Docker Compose example bundles the following Snowplow components in two distinct containers:
 
 - [Scala Stream Collector][ssc]
 - [Stream Enrich][se]
 
-As is, the configuration files make the following assumptions regarding Kinesis streams:
+Additionally, they make use of [NSQ][nsq] topics to store events, the NSQ components are running
+in three different containers:
 
-- The `snowplow-raw` stream exists and is used to store the collected events
-- The `snowplow-enriched` stream exists and is used to store the enriched events
-- The `snowplow-bad` stream exists and is used to store the events which failed validation
-
-All those streams being located in `us-east-1`. To authenticate the components, the
-[DefaultAWSCredentialsProviderChain][dacpc] is used.
-
-Feel free to modify those configuration files to suit your needs.
+- nsqd: the daemon in charge of receiving, queueing and delivering messages
+- nsqlookupd: the daemon taking care of managing who produces and consumes what
+- nsqadmin: a web UI to perform administrative tasks as well as giving an overview of the NSQ
+topology
 
 ## Usage
 
-Once you have configured the configuration files to your liking, you can launch those two components
+Once you have modified the configuration files to your liking, you can launch those two components
 with:
 
 ```bash
@@ -52,6 +49,6 @@ limitations under the License.
 [ssc]: https://github.com/snowplow/snowplow-docker/tree/master/scala-stream-collector
 [se]: https://github.com/snowplow/snowplow-docker/tree/master/stream-enrich
 
-[dacpc]: http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/auth/DefaultAWSCredentialsProviderChain.html
+[nsq]: http://nsq.io/
 
 [license]: http://www.apache.org/licenses/LICENSE-2.0
