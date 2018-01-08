@@ -20,10 +20,10 @@ You can pull the images from the registry directly:
 
 ```bash
 # Scala Stream Collector image
-docker pull snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.11.0
+docker pull snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.12.0
 
 # Stream Enrich image
-docker pull snowplow-docker-registry.bintray.io/snowplow/stream-enrich:0.12.0
+docker pull snowplow-docker-registry.bintray.io/snowplow/stream-enrich:0.13.0
 
 # Elasticsearch Loader image
 docker pull snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:0.10.1
@@ -41,10 +41,10 @@ Alternatively, you can build them yourself:
 docker pull snowplow-docker-registry.bintray.io/snowplow/base:0.1.0
 
 # Scala Stream Collector image
-docker build -t snowplow/scala-stream-collector:0.11.0 scala-stream-collector/0.11.0
+docker build -t snowplow/scala-stream-collector:0.12.0 scala-stream-collector/0.12.0
 
 # Stream Enrich image
-docker build -t snowplow/stream-enrich:0.12.0 stream-enrich/0.12.0
+docker build -t snowplow/stream-enrich:0.13.0 stream-enrich/0.13.0
 
 # Elasticsearch Loader image
 docker build -t snowplow/elasticsearch-loader:0.10.1 elasticsearch-loader/0.10.1
@@ -69,15 +69,15 @@ Next, you can run a container for each component by mounting your configuration 
 # Scala Stream Collector container
 docker run \
   -v $PWD/scala-stream-collector-config:/snowplow/config \
-  snowplow/scala-stream-collector:0.11.0 \ # if you have built the image
-  # snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.11.0 if you have pulled the image
+  snowplow/scala-stream-collector:0.12.0 \ # if you have built the image
+  # snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.12.0 if you have pulled the image
   --config /snowplow/config/config.hocon
 
 # Stream Enrich
 docker run \
   -v $PWD/stream-enrich-config:/snowplow/config \
-  snowplow/stream-enrich:0.12.0 \ # if you have built the image
-  # snowplow-docker-registry.bintray.io/snowplow/stream-enrich:0.12.0 if you have pulled the image
+  snowplow/stream-enrich:0.13.0 \ # if you have built the image
+  # snowplow-docker-registry.bintray.io/snowplow/stream-enrich:0.13.0 if you have pulled the image
   --config /snowplow/config/config.hocon \
   --resolver file:/snowplow/config/resolver.json \
   --enrichments file:/snowplow/config/enrichments/ \
