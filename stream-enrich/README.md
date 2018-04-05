@@ -25,9 +25,10 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 Running the container without arguments will print out its usage:
 
 ```bash
-$ docker run snowplow-docker-registry.bintray.io/snowplow/stream-enrich:0.x.0
+$ VERSION=0.14.0
+$ docker run snowplow-docker-registry.bintray.io/snowplow/stream-enrich:$VERSION
 
-snowplow-stream-enrich 0.x.0
+snowplow-stream-enrich $VERSION
 Usage: snowplow-stream-enrich [options]
 
   --help
@@ -47,7 +48,7 @@ Alternatively, we can mount a configuration folder and run Stream Enrich:
 $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
-  snowplow-docker-registry.bintray.io/snowplow/stream-enrich:0.x.0 \
+  snowplow-docker-registry.bintray.io/snowplow/stream-enrich:$VERSION \
   --config /snowplow/config/config.hocon \
   --resolver file:/snowplow/config/resolver.json \
   --enrichments file:/snowplow/config/enrichments/ \
@@ -61,7 +62,7 @@ $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
   -e 'SP_JAVA_OPTS=-Xms512m -Xmx512m' \
-  snowplow-docker-registry.bintray.io/snowplow/stream-enrich:0.x.0 \
+  snowplow-docker-registry.bintray.io/snowplow/stream-enrich:$VERSION \
   --config /snowplow/config/config.hocon \
   --resolver file:/snowplow/config/resolver.json \
   --enrichments file:/snowplow/config/enrichments/ \
