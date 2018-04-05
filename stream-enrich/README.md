@@ -1,6 +1,13 @@
 # Stream Enrich
 
-This folder contains the Docker image for [the Snowplow Stream Enrich process][stream-enrich]
+This folder contains the Docker images for [the Snowplow Stream Enrich process][stream-enrich].
+
+There is one image per targeted platform:
+
+- `google-pubsub`
+- `kafka`
+- `kinesis`
+- `nsq`
 
 ## Introduction
 
@@ -25,8 +32,8 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 Running the container without arguments will print out its usage:
 
 ```bash
-$ VERSION=0.14.0
-$ docker run snowplow-docker-registry.bintray.io/snowplow/stream-enrich:$VERSION
+$ VERSION=0.15.0
+$ docker run snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:${VERSION}
 
 snowplow-stream-enrich $VERSION
 Usage: snowplow-stream-enrich [options]
@@ -35,9 +42,9 @@ Usage: snowplow-stream-enrich [options]
   --version
   --config <filename>
   --resolver <resolver uri>
-                           Iglu resolver file, 'file:[filename]' or 'dynamodb:[region/table/key]'
+                           Iglu resolver file, 'file:[filename]'
   --enrichments <enrichment directory uri>
-                           Directory of enrichment configuration JSONs, 'file:[filename]' or 'dynamodb:[region/table/key]'
+                           Directory of enrichment configuration JSONs, 'file:[filename]'
   --force-ip-lookups-download
                            Invalidate the cached IP lookup files and download them anew
 ```
@@ -48,7 +55,7 @@ Alternatively, we can mount a configuration folder and run Stream Enrich:
 $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
-  snowplow-docker-registry.bintray.io/snowplow/stream-enrich:$VERSION \
+  snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:${VERSION} \
   --config /snowplow/config/config.hocon \
   --resolver file:/snowplow/config/resolver.json \
   --enrichments file:/snowplow/config/enrichments/ \
@@ -62,7 +69,7 @@ $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
   -e 'SP_JAVA_OPTS=-Xms512m -Xmx512m' \
-  snowplow-docker-registry.bintray.io/snowplow/stream-enrich:$VERSION \
+  snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:${VERSION} \
   --config /snowplow/config/config.hocon \
   --resolver file:/snowplow/config/resolver.json \
   --enrichments file:/snowplow/config/enrichments/ \
