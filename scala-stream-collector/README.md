@@ -1,6 +1,13 @@
 # Scala Stream Collector
 
-This folder contains the Docker image for [the Snowplow Scala Stream Collector][ssc]
+This folder contains the Docker images for [the Snowplow Scala Stream Collector][ssc].
+
+There is one image per targeted platform:
+
+- `google-pubsub`
+- `kafka`
+- `kinesis`
+- `nsq`
 
 ## Introduction
 
@@ -27,9 +34,10 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 Running the container without arguments will print out its usage:
 
 ```bash
-$ docker run snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.x.0
+$ VERSION=0.13.0
+$ docker run snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:${VERSION}
 
-snowplow-stream-collector 0.x.0
+snowplow-stream-collector $VERSION
 Usage: snowplow-stream-collector [options]
 
   --help
@@ -44,7 +52,7 @@ $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
   -p 80:80 \
-  snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.x.0 \
+  snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:${VERSION} \
   --config /snowplow/config/config.hocon
 ```
 
@@ -56,7 +64,7 @@ $ docker run \
   -v ${PWD}/config:/snowplow/config \
   -p 80:80 \
   -e 'SP_JAVA_OPTS=-Xms512m -Xmx512m' \
-  snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector:0.x.0 \
+  snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:${VERSION} \
   --config /snowplow/config/config.hocon
 ```
 
