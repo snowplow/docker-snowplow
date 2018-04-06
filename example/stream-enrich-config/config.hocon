@@ -1,12 +1,4 @@
 enrich {
-  source = nsq
-  sink = nsq
-
-  aws {
-    accessKey = default
-    secretKey = default
-  }
-
   streams {
     in.raw = raw
 
@@ -16,23 +8,8 @@ enrich {
       partitionKey = other
     }
 
-    kinesis {
-      region = us-east-1
-      maxRecords = 2000
-      initialPosition = TRIM_HORIZON
-
-      backoffPolicy {
-        minBackoff = 200
-        maxBackoff = 1000
-      }
-    }
-
-    kafka {
-      brokers = "kafkaBrokers"
-      retries = 0
-    }
-
-    nsq {
+    sourceSink {
+      enabled = nsq
       rawChannel = enrich
       host = nsqd
       port = 4150
