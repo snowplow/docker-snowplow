@@ -62,7 +62,7 @@ For a more complete example, check out [the docker compose example][docker-compo
 
 ## Copyright and license
 
-The Elasticsearch Loader image is copyright 2017-2017 Snowplow Analytics Ltd.
+The Elasticsearch Loader image is copyright 2017-2018 Snowplow Analytics Ltd.
 
 Licensed under the [Apache License, Version 2.0][license] (the "License");
 you may not use this software except in compliance with the License.

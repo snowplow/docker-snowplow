@@ -116,7 +116,7 @@ There is also a Docker Compose example in the [example folder][example].
 
 ## Copyright and license
 
-Copyright 2017-2017 Snowplow Analytics Ltd.
+Copyright 2017-2018 Snowplow Analytics Ltd.
 
 Licensed under the [Apache License, Version 2.0][license] (the "License");
 you may not use this software except in compliance with the License.
