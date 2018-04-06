@@ -25,9 +25,10 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 Running the container without arguments will print out its usage:
 
 ```bash
-$ docker run snowplow-docker-registry.bintray.io/snowplow/s3-loader:0.x.0
+$ VERSION=0.6.0
+$ docker run snowplow-docker-registry.bintray.io/snowplow/s3-loader:${VERSION}
 
-snowplow-s3-loader 0.x.0
+snowplow-s3-loader $VERSION
 
 Usage: snowplow-s3-loader [options]
 
@@ -42,7 +43,7 @@ Alternatively, we can mount a configuration folder and run the loader:
 $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
-  snowplow-docker-registry.bintray.io/snowplow/s3-loader:0.x.0 \
+  snowplow-docker-registry.bintray.io/snowplow/s3-loader:${VERSION} \
   --config /snowplow/config/config.hocon
 ```
 
@@ -53,7 +54,7 @@ $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
   -e 'SP_JAVA_OPTS=-Xms512m -Xmx512m' \
-  snowplow-docker-registry.bintray.io/snowplow/s3-loader:0.x.0 \
+  snowplow-docker-registry.bintray.io/snowplow/s3-loader:${VERSION} \
   --config /snowplow/config/config.hocon
 ```
 

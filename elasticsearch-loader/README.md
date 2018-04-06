@@ -26,9 +26,10 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 Running the container without arguments will print out its usage:
 
 ```bash
-$ docker run snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:0.x.0
+$ VERSION=0.10.1
+$ docker run snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:${VERSION}
 
-snowplow-elasticsearch-loader 0.x.0
+snowplow-elasticsearch-loader $VERSION
 
 Usage: snowplow-elasticsearch-loader [options]
 
@@ -43,7 +44,7 @@ Alternatively, we can mount a configuration folder and run the loader:
 $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
-  snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:0.x.0 \
+  snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:${VERSION} \
   --config /snowplow/config/config.hocon
 ```
 
@@ -54,7 +55,7 @@ $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
   -e 'SP_JAVA_OPTS=-Xms512m -Xmx512m' \
-  snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:0.x.0 \
+  snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:${VERSION} \
   --config /snowplow/config/config.hocon
 ```
 
