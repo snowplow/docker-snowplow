@@ -14,10 +14,10 @@ env:
   - IMG=scala-stream-collector/0.13.0/kafka
   - IMG=scala-stream-collector/0.13.0/kinesis
   - IMG=scala-stream-collector/0.13.0/nsq
-  - IMG=stream-enrich/0.15.0/google-pubsub
-  - IMG=stream-enrich/0.15.0/kafka
-  - IMG=stream-enrich/0.15.0/kinesis
-  - IMG=stream-enrich/0.15.0/nsq
+  - IMG=stream-enrich/0.16.0/google-pubsub
+  - IMG=stream-enrich/0.16.0/kafka
+  - IMG=stream-enrich/0.16.0/kinesis
+  - IMG=stream-enrich/0.16.0/nsq
   - IMG=s3-loader/0.6.0
   - IMG=elasticsearch-loader/0.10.1
   global:
