@@ -2,7 +2,7 @@ FROM snowplow-docker-registry.bintray.io/snowplow/base:0.1.0
 LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 # The version of the collector to download.
-ENV COLLECTOR_VERSION="0.12.0"
+ENV COLLECTOR_VERSION="0.13.0"
 
 # The name of the archive to download.
 ENV ARCHIVE="snowplow_scala_stream_collector_${COLLECTOR_VERSION}.zip"
