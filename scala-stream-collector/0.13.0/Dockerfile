@@ -2,10 +2,13 @@ FROM snowplow-docker-registry.bintray.io/snowplow/base:0.1.0
 LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 # The version of the collector to download.
-ENV COLLECTOR_VERSION="0.12.0"
+ENV COLLECTOR_VERSION="0.13.0"
+
+# The type of collector to use (kafka, google_pubsub, kinesis, nsg)
+ENV COLLECTOR_TYPE="google_pubsub"
 
 # The name of the archive to download.
-ENV ARCHIVE="snowplow_scala_stream_collector_${COLLECTOR_VERSION}.zip"
+ENV ARCHIVE="snowplow_scala_stream_collector_${COLLECTOR_TYPE}_${COLLECTOR_VERSION}.zip"
 
 # Install the Scala Stream Collector.
 RUN mkdir -p /tmp/build && \
