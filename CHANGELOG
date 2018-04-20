@@ -1,3 +1,14 @@
+Release 4 (2018-04-20)
+----------------------
+Add Dockerfile for Iglu Server (#2)
+Scala Stream Collector 0.13.0 images (#41)
+Stream Enrich 0.16.0 image (#40)
+Stream Enrich 0.15.0 image (#39)
+Stream Enrich 0.14.0 image (#36)
+Use SSC 0.13.0 and SE 0.16.0 in the Docker Compose example (#44)
+Replace all 0.x.0 entries with $VERSION (#38)
+Extend copyright notice to 2018 (#43)
+
 Release 3 (2018-01-08)
 ----------------------
 Stream Enrich 0.13.0 image (#31)
