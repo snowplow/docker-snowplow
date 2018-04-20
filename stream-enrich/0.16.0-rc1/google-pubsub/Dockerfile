@@ -2,10 +2,10 @@ FROM snowplow-docker-registry.bintray.io/snowplow/base:0.1.0
 LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 # The version of the collector to download.
-ENV ENRICH_VERSION="0.16.0"
+ENV ENRICH_VERSION="0.16.0_rc1"
 
 # The targeted platform
-ENV PLATFORM="kafka"
+ENV PLATFORM="google_pubsub"
 
 # The name of the archive to download.
 ENV ARCHIVE="snowplow_stream_enrich_${PLATFORM}_${ENRICH_VERSION}.zip"

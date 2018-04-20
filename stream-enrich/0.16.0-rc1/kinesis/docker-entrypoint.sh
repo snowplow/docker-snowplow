@@ -12,4 +12,4 @@ cd $(eval echo ~snowplow)
 # Make sure we run the collector as the snowplow user
 exec su-exec snowplow:snowplow /usr/bin/java \
   $SP_JAVA_OPTS -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap \
-  -jar ${SNOWPLOW_BIN_PATH}/snowplow-stream-enrich-${PLATFORM}-${ENRICH_VERSION}.jar "$@"
+  -jar ${SNOWPLOW_BIN_PATH}/snowplow-stream-enrich-${PLATFORM}-${ENRICH_VERSION//_/-}.jar "$@"
