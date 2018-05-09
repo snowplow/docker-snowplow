@@ -1,3 +1,7 @@
+Release 5 (2018-05-09)
+----------------------
+Add Stream Enrich 0.16.1 image (#46) 
+
 Release 4 (2018-04-20)
 ----------------------
 Add Dockerfile for Iglu Server (#2)
