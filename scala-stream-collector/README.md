@@ -12,7 +12,8 @@ There is one image per targeted platform:
 ## Introduction
 
 This image is based on [the base image][base-image] which leverages
-[the Java 8 Alpine image][alpine-image].
+[the Java 8 Alpine image][alpine-image] (the Google PubSub image leverages
+[the Java 8 Debian image][debian-image] due to incompatibilities with Alpine).
 
 The Scala Stream Collector runs under [dumb-init][dumb-init] which handles reaping zombie processes
 and forwards signals on to all processes running in the container. This image also uses
@@ -86,6 +87,7 @@ limitations under the License.
 [base-image]: https://github.com/snowplow/snowplow-docker/tree/master/base
 [docker-compose-example]: https://github.com/snowplow/snowplow-docker/tree/master/example
 [alpine-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/alpine/Dockerfile
+[debian-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/slim/Dockerfile
 
 [ssc]: https://github.com/snowplow/snowplow/tree/master/2-collectors/scala-stream-collector
 [dumb-init]: https://github.com/Yelp/dumb-init
