@@ -27,7 +27,7 @@ curl -X GET \
 
 cd $project
 # except for the base image, there is one folder per image version
-if [ "${project}" != "base" ]; then
+if [[ "${project}" != base* ]]; then
     if [ -d "${release}" ]; then
         cd $release
     else

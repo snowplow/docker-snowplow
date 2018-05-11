@@ -41,8 +41,9 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.3.0
 Alternatively, you can build them yourself:
 
 ```bash
-# All images are based on the base image
+# All images are based on the base images
 docker pull snowplow-docker-registry.bintray.io/snowplow/base:0.1.0
+docker pull snowplow-docker-registry.bintray.io/snowplow/base-debian:0.1.0
 
 # NSQ Scala Stream Collector image, there are others available for Kinesis, Kafka and Google PubSub
 docker build -t snowplow/scala-stream-collector-nsq:0.13.0 scala-stream-collector/0.13.0/nsq
