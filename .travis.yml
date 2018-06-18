@@ -15,10 +15,10 @@ env:
   - IMG=scala-stream-collector/0.13.0/kafka
   - IMG=scala-stream-collector/0.13.0/kinesis
   - IMG=scala-stream-collector/0.13.0/nsq
-  - IMG=stream-enrich/0.16.1/google-pubsub
-  - IMG=stream-enrich/0.16.1/kafka
-  - IMG=stream-enrich/0.16.1/kinesis
-  - IMG=stream-enrich/0.16.1/nsq
+  - IMG=stream-enrich/0.17.0/google-pubsub
+  - IMG=stream-enrich/0.17.0/kafka
+  - IMG=stream-enrich/0.17.0/kinesis
+  - IMG=stream-enrich/0.17.0/nsq
   - IMG=s3-loader/0.6.0
   - IMG=elasticsearch-loader/0.10.1
   - IMG=iglu-server/0.3.0
