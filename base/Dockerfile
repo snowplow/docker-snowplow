@@ -12,7 +12,7 @@ RUN addgroup snowplow && \
 
 # Install the components common to all apps.
 # https://github.com/yelp/dumb-init: lightweight init system
-# su-exec: sudo replacement
+# https://github.com/ncopa/su-exec: sudo replacement
 RUN apk add --no-cache dumb-init su-exec ca-certificates wget
 
 # /snowplow/bin is meant to contain the application jar.

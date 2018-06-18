@@ -1,14 +1,14 @@
 FROM snowplow-docker-registry.bintray.io/snowplow/base-debian:0.1.0
 LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
-# The version of the collector to download.
-ENV COLLECTOR_VERSION="0.13.0"
+# The version of stream enrich to download.
+ENV ENRICH_VERSION="0.17.0"
 
 # The targeted platform
 ENV PLATFORM="google_pubsub"
 
 # The name of the archive to download.
-ENV ARCHIVE="snowplow_scala_stream_collector_${PLATFORM}_${COLLECTOR_VERSION}.zip"
+ENV ARCHIVE="snowplow_stream_enrich_${PLATFORM}_${ENRICH_VERSION}.zip"
 
 # Install the Scala Stream Collector.
 RUN mkdir -p /tmp/build && \
@@ -18,10 +18,7 @@ RUN mkdir -p /tmp/build && \
     cd /tmp && \
     rm -rf /tmp/build
 
-# Port used by the collector.
-EXPOSE 80
-
-# Defines an entrypoint script delegating the lauching of the collector to the snowplow user.
+# Defines an entrypoint script delegating the lauching of stream enrich to the snowplow user.
 # The script uses dumb-init as the top-level process.
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT [ "docker-entrypoint.sh" ]

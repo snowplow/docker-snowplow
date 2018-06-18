@@ -24,7 +24,7 @@ You can pull the images from the registry directly:
 docker pull snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:0.13.0
 
 # NSQ Stream Enrich image, there are others available for Kinesis, Kafka and Google PubSub
-docker pull snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.16.1
+docker pull snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.17.0
 
 # Elasticsearch Loader image
 docker pull snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:0.10.1
@@ -41,14 +41,15 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.3.0
 Alternatively, you can build them yourself:
 
 ```bash
-# All images are based on the base image
+# All images are based on the base images
 docker pull snowplow-docker-registry.bintray.io/snowplow/base:0.1.0
+docker pull snowplow-docker-registry.bintray.io/snowplow/base-debian:0.1.0
 
 # NSQ Scala Stream Collector image, there are others available for Kinesis, Kafka and Google PubSub
 docker build -t snowplow/scala-stream-collector-nsq:0.13.0 scala-stream-collector/0.13.0/nsq
 
 # NSQ Stream Enrich image, there are others available for Kinesis, Kafka and Google PubSub
-docker build -t snowplow/stream-enrich-nsq:0.16.1 stream-enrich/0.16.1/nsq
+docker build -t snowplow/stream-enrich-nsq:0.17.0 stream-enrich/0.17.0/nsq
 
 # Elasticsearch Loader image
 docker build -t snowplow/elasticsearch-loader:0.10.1 elasticsearch-loader/0.10.1
@@ -84,8 +85,8 @@ docker run \
 # NSQ Stream Enrich container, there are others available for Kinesis, Kafka and Google PubSub
 docker run \
   -v $PWD/stream-enrich-config:/snowplow/config \
-  snowplow/stream-enrich-nsq:0.16.1 \ # if you have built the image
-  # snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.16.1 if you have pulled the image
+  snowplow/stream-enrich-nsq:0.17.0 \ # if you have built the image
+  # snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.17.0 if you have pulled the image
   --config /snowplow/config/config.hocon \
   --resolver file:/snowplow/config/resolver.json \
   --enrichments file:/snowplow/config/enrichments/ \

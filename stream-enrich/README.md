@@ -12,7 +12,8 @@ There is one image per targeted platform:
 ## Introduction
 
 This image is based on [the base image][base-image] which leverages
-[the Java 8 Alpine image][alpine-image].
+[the Java 8 Alpine image][alpine-image] (the Google PubSub image leverages
+[the Java 8 Debian image][debian-image] due to incompatibilities with Alpine).
 
 Stream Enrich runs under [dumb-init][dumb-init] which handles reaping zombie processes
 and forwards signals on to all processes running in the container. This image also uses
@@ -32,7 +33,7 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 Running the container without arguments will print out its usage:
 
 ```bash
-$ VERSION=0.16.1
+$ VERSION=0.17.0
 $ docker run snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:${VERSION}
 
 snowplow-stream-enrich $VERSION
@@ -94,6 +95,7 @@ limitations under the License.
 [base-image]: https://github.com/snowplow/snowplow-docker/tree/master/base
 [docker-compose-example]: https://github.com/snowplow/snowplow-docker/tree/master/example
 [alpine-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/alpine/Dockerfile
+[debian-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/slim/Dockerfile
 
 [stream-enrich]: https://github.com/snowplow/snowplow/tree/master/3-enrich/stream-enrich
 [dumb-init]: https://github.com/Yelp/dumb-init
