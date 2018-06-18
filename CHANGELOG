@@ -1,6 +1,13 @@
+Release 6 (2018-06-18)
+----------------------
+Add 0.17.0 stream-enrich (#58)
+Modify the GCP images to use debian-base (#52)
+Add base-debian docker image (#50)
+Fix formatting of logging options in compose file (#55)
+
 Release 5 (2018-05-09)
 ----------------------
-Add Stream Enrich 0.16.1 image (#46) 
+Add Stream Enrich 0.16.1 image (#46)
 
 Release 4 (2018-04-20)
 ----------------------
