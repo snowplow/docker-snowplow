@@ -1,0 +1,184 @@
+# Copyright (c) 2013-2018 Snowplow Analytics Ltd. All rights reserved.
+#
+# This program is licensed to you under the Apache License Version 2.0, and
+# you may not use this file except in compliance with the Apache License
+# Version 2.0.  You may obtain a copy of the Apache License Version 2.0 at
+# http://www.apache.org/licenses/LICENSE-2.0.
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the Apache License Version 2.0 is distributed on an "AS
+# IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the Apache License Version 2.0 for the specific language
+# governing permissions and limitations there under.
+
+# This file (application.conf.example) contains a template with
+# configuration options for the Scala Stream Collector.
+#
+# To use, copy this to 'application.conf' and modify the configuration options.
+
+# 'collector' contains configuration options for the main Scala collector.
+collector {
+  # The collector runs as a web service specified on the following interface and port.
+  interface = "0.0.0.0"
+  interface = ${?COLLECTOR_INTERFACE}
+  port = 8080
+  port = ${?COLLECTOR_PORT}
+
+  # Configure the P3P policy header.
+  p3p {
+    policyRef = "/w3c/p3p.xml"
+    CP = "NOI DSP COR NID PSA OUR IND COM NAV STA"
+  }
+
+  # Cross domain policy configuration.
+  # If "enabled" is set to "false", the collector will respond with a 404 to the /crossdomain.xml
+  # route.
+  crossDomain {
+    enabled = false
+    enabled = ${?CROSS_DOMAIN_ENABLED}
+    # Domain that is granted access, *.acme.com will match http://acme.com and http://sub.acme.com
+    domain = "*"
+    domain = ${?CROSS_DOMAIN_DOMAIN}
+    # Whether to only grant access to HTTPS or both HTTPS and HTTP sources
+    secure = true
+    secure = ${?CROSS_DOMAIN_SECURE}
+  }
+
+  # The collector returns a cookie to clients for user identification
+  # with the following domain and expiration.
+  cookie {
+    enabled = true
+    enabled = ${?COLLECTOR_COOKIE_ENABLED}
+    expiration = "365 days"
+    expiration = ${?COLLECTOR_COOKIE_EXPIRATION} # e.g. "365 days"
+    # Network cookie name
+    name = "sp"
+    name = ${?COLLECTOR_COOKIE_NAME}
+    # The domain is optional and will make the cookie accessible to other
+    # applications on the domain. Comment out this line to tie cookies to
+    # the collector's full domain
+    domain = "hello"
+    domain = "${?COLLECTOR_COOKIE_DOMAIN}"
+  }
+
+  # When enabled and the cookie specified above is missing, performs a redirect to itself to check
+  # if third-party cookies are blocked using the specified name. If they are indeed blocked,
+  # fallbackNetworkId is used instead of generating a new random one.
+  cookieBounce {
+    enabled = false
+    enabled = ${?COOKIE_BOUNCE_ENABLED}
+    # The name of the request parameter which will be used on redirects checking that third-party
+    # cookies work.
+    name = "n3pc"
+    name = ${?COOKIE_BOUNCE_QUERY_PARAM}
+    # Network user id to fallback to when third-party cookies are blocked.
+    fallbackNetworkUserId = "00000000-0000-4000-A000-000000000000"
+    fallbackNetworkUserId = ${?DEFAULT_NETWORK_USER_ID}
+    # Optionally, specify the name of the header containing the originating protocol for use in the
+    # bounce redirect location. Use this if behind a load balancer that performs SSL termination.
+    # The value of this header must be http or https. Example, if behind an AWS Classic ELB.
+    forwardedProtocolHeader = "X-Forwarded-Proto"
+    forwardedProtocolHeader = ${?COOKIE_BOUNCE_FORWARD_HEADER}
+  }
+
+  # When enabled, the redirect url passed via the `u` query parameter is scanned for a placeholder
+  # token. All instances of that token are replaced withe the network ID. If the placeholder isn't
+  # specified, the default value is `${?SP_NUID}`.
+  redirectMacro {
+    enabled = false
+    enabled = ${?REDIRECT_ENABLED}
+    # Optional custom placeholder token (defaults to the literal `${?SP_NUID}`)
+    placeholder = "[TOKEN]"
+    placeholder = ${?REDIRECT_NUID_PLACEHOLDER}
+  }
+
+  streams {
+    # Events which have successfully been collected will be stored in the good stream/topic
+    good = "good"
+    good = ${?GOOD_STREAM}
+
+    # Events that are too big (w.r.t Kinesis 1MB limit) will be stored in the bad stream/topic
+    bad = "bad"
+    bad = ${?BAD_STREAM}
+
+    # Whether to use the incoming event's ip as the partition key for the good stream/topic
+    # Note: Nsq does not make use of partition key.
+    useIpAddressAsPartitionKey = false
+    useIpAddressAsPartitionKey = ${?IP_ADDRESS_PARTITION_KEY}
+
+    # Enable the chosen sink by uncommenting the appropriate configuration
+    sink {
+      # Choose between kinesis, googlepubsub, kafka, nsq, or stdout.
+      # To use stdout, comment or remove everything in the "collector.streams.sink" section except
+      # "enabled" which should be set to "stdout".
+      enabled = kinesis
+
+      # Region where the streams are located
+      region = ${?AWS_REGION}
+
+      # Thread pool size for Kinesis API requests
+      threadPoolSize = 10
+      threadPoolSize = ${?THREADPOOL_SIZE}
+
+      # The following are used to authenticate for the Amazon Kinesis sink.
+      # If both are set to 'default', the default provider chain is used
+      # (see http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/auth/DefaultAWSCredentialsProviderChain.html)
+      # If both are set to 'iam', use AWS IAM Roles to provision credentials.
+      # If both are set to 'env', use environment variables AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+      aws {
+        accessKey = env
+        secretKey = env
+      }
+
+      # Minimum and maximum backoff periods, in milliseconds
+      backoffPolicy {
+        minBackoff = 3000
+        minBackoff = ${?MIN_BACKOFF_MILLIS}
+        maxBackoff = 60000
+        maxBackoff = ${?MAX_BACKOFF_MILLIS}
+      }
+    }
+
+    # Incoming events are stored in a buffer before being sent to Kinesis/Kafka.
+    # Note: Buffering is not supported by NSQ.
+    # The buffer is emptied whenever:
+    # - the number of stored records reaches record-limit or
+    # - the combined size of the stored records reaches byte-limit or
+    # - the time in milliseconds since the buffer was last emptied reaches time-limit
+    buffer {
+      byteLimit = 1000
+      byteLimit = ${?BUFFER_BYTE_THRESHOLD}
+      recordLimit = 10000 # Not supported by Kafka; will be ignored
+      recordLimit = ${?BUFFER_RECORD_THRESHOLD} # Not supported by Kafka; will be ignored
+      timeLimit = 6000
+      timeLimit = ${?BUFFER_TIME_THRESHOLD}
+    }
+  }
+}
+
+# Akka has a variety of possible configuration options defined at
+# http://doc.akka.io/docs/akka/current/scala/general/configuration.html
+akka {
+  loglevel = DEBUG # 'OFF' for no logging, 'DEBUG' for all logging.
+  loglevel = ${?LOG_LEVEL}
+  loggers = ["akka.event.slf4j.Slf4jLogger"]
+
+  # akka-http is the server the Stream collector uses and has configurable options defined at
+  # http://doc.akka.io/docs/akka-http/current/scala/http/configuration.html
+  http.server {
+    # To obtain the hostname in the collector, the 'remote-address' header
+    # should be set. By default, this is disabled, and enabling it
+    # adds the 'Remote-Address' header to every request automatically.
+    remote-address-header = on
+
+    raw-request-uri-header = on
+
+    # Define the maximum request length (the default is 2048)
+    parsing {
+      max-uri-length = 32768
+      max-uri-lenght = ${?URI_MAX_LENGHT}
+      uri-parsing-mode = relaxed
+      uri-parsing-mode = ${?URI_PARSING_MODE}
+    }
+  }
+}
