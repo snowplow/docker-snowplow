@@ -18,6 +18,8 @@ RUN mkdir -p /tmp/build && \
     cd /tmp && \
     rm -rf /tmp/build
 
+COPY default-config.hocon /snowplow/config/config.hocon
+
 # Port used by the collector.
 EXPOSE 80
 
