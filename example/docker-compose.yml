@@ -51,12 +51,12 @@ services:
       - "SP_JAVA_OPTS=-Xms512m -Xmx512m"
 
   stream-enrich:
-    image: snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.16.0
+    image: snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.18.0
     command: [
       "--config", "/snowplow/config/config.hocon",
       "--resolver", "file:/snowplow/config/resolver.json",
       "--enrichments", "file:/snowplow/config/enrichments",
-      "--force-ip-lookups-download"
+      "--force-cached-files-download"
     ]
     depends_on:
       - scala-stream-collector
