@@ -9,7 +9,7 @@ script:
 - cd ${TRAVIS_BUILD_DIR}
 env:
   matrix:
-  - IMG=base
+  - IMG=base-alpine
   - IMG=base-debian
   - IMG=scala-stream-collector/0.13.0/google-pubsub
   - IMG=scala-stream-collector/0.13.0/kafka
@@ -29,11 +29,11 @@ env:
   - secure: NE8WvLzRlwdZolN8RLEL2xphxkC3gbxuoUCWea/mR7KsfZ2MpmN8Mzo+QQj+NnNG+B8NXAbTO0Z4v+wKTtHNdX+6SAegyzBCjmIh20l93aqDoIAllmN/N66sAJ9p+gNltEDG2xatN1OWyapigNIMq3TOK+bFvGKoMZZpBH47KMmlM6z26MjOisWwkpatZ7SOweVe58qOFuqvq98dhyO4erVTq8oL9exyS6iF6uKOJPfvetUJse0uZfgn1DpbXEdLy/erQ1vj3JwOb+Z/BrceUuFW/+6UGpuhK8K9u9i8AUJyv0dZKxu4DPflBqZDzDSEg3rdXMf+i4W2mN5KE0D477erIZBniiToa63gWDQAxN+zrpXe+xlDBRe9JIy9qe2RBsYA7Ec56rtRwWcRAAFz836ZmRqLSQQw6EKjmDjdP9n31xQvuUQFxwzfbWmApgH4ahC/nfGfviK8s09piPtecr653/FR20PyH50jhTH8aARXCkY6mQf0Nxss9IgqLUUHJ/INzs3gDHbaErlzU1N8gYea0V2lt8RF4+oYMDw90zZmXOBLeCkO7Sy3NqCl7Xg4CwGOKYK1lniI2x6MXaWEkZLTa4H4FyOZuCXGV2vk7KStmOqWeHtWh1+w6H6er/NLv20bsrV7TihpM02B7OkWIyt9Jf4bw+KKMeVsoGBwwXg=
 deploy:
 - provider: script
-  script: ./.travis/deploy.sh base $TRAVIS_TAG
+  script: ./.travis/deploy.sh base-alpine $TRAVIS_TAG
   skip_cleanup: true
   on:
     tags: true
-    condition: '"$(.travis/is_release_tag.sh base $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base'
+    condition: '"$(.travis/is_release_tag.sh base-alpine $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine'
 - provider: script
   script: ./.travis/deploy.sh base-debian $TRAVIS_TAG
   skip_cleanup: true
