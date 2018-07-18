@@ -33,7 +33,7 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 Running the container without arguments will print out its usage:
 
 ```bash
-$ VERSION=0.17.0
+$ VERSION=0.18.0
 $ docker run snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:${VERSION}
 
 snowplow-stream-enrich $VERSION
@@ -46,8 +46,8 @@ Usage: snowplow-stream-enrich [options]
                            Iglu resolver file, 'file:[filename]'
   --enrichments <enrichment directory uri>
                            Directory of enrichment configuration JSONs, 'file:[filename]'
-  --force-ip-lookups-download
-                           Invalidate the cached IP lookup files and download them anew
+  --force-cached-files-download
+                           Invalidate the cached files and download them anew
 ```
 
 Alternatively, we can mount a configuration folder and run Stream Enrich:
@@ -60,7 +60,7 @@ $ docker run \
   --config /snowplow/config/config.hocon \
   --resolver file:/snowplow/config/resolver.json \
   --enrichments file:/snowplow/config/enrichments/ \
-  --force-ip-lookups-download
+  --force-cached-files-download
 ```
 
 If we want to specify additional JVM options, we can add the `SP_JAVA_OPTS` environment variable:
@@ -74,7 +74,7 @@ $ docker run \
   --config /snowplow/config/config.hocon \
   --resolver file:/snowplow/config/resolver.json \
   --enrichments file:/snowplow/config/enrichments/ \
-  --force-ip-lookups-download
+  --force-cached-files-download
 ```
 
 For a more complete example, check out [the docker compose example][docker-compose-example].
@@ -92,7 +92,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-[base-image]: https://github.com/snowplow/snowplow-docker/tree/master/base
+[base-image]: https://github.com/snowplow/snowplow-docker/tree/master/base-alpine
 [docker-compose-example]: https://github.com/snowplow/snowplow-docker/tree/master/example
 [alpine-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/alpine/Dockerfile
 [debian-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/slim/Dockerfile
