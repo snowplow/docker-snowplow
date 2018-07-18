@@ -1,3 +1,11 @@
+Release 7 (2017-07-18)
+----------------------
+Add Stream Enrich 0.18.0 image (#67)
+Use Stream Enrich 0.18.0 in the Docker Compose example (#68)
+Rename the base image to base-alpine (#51)
+Bump base image JDK to 1.8.0_171 (#61)
+Put the Scala Stream Collector on port 8080 in the Docker Compose example (#70)
+
 Release 6 (2018-06-18)
 ----------------------
 Add 0.17.0 stream-enrich (#58)
