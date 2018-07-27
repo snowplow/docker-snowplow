@@ -13,7 +13,7 @@ services:
         max-size: 1G
   iglu-server:
     container_name: iglu-server
-    image: snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.3.0
+    image: snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.3.1
     entrypoint: /usr/local/bin/wait-for-postgres.sh postgres --config /snowplow/config/application.conf
     depends_on:
       - postgres
