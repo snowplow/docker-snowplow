@@ -26,7 +26,7 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 Running the container without arguments will print out its usage:
 
 ```bash
-$ VERSION=0.10.1
+$ VERSION=0.10.2
 $ docker run snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:${VERSION}
 
 snowplow-elasticsearch-loader $VERSION

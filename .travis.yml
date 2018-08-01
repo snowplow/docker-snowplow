@@ -20,7 +20,7 @@ env:
   - IMG=stream-enrich/0.18.0/kinesis
   - IMG=stream-enrich/0.18.0/nsq
   - IMG=s3-loader/0.6.0
-  - IMG=elasticsearch-loader/0.10.1
+  - IMG=elasticsearch-loader/0.10.2
   - IMG=iglu-server/0.3.0
   global:
   # BINTRAY_SNOWPLOW_DOCKER_USER
