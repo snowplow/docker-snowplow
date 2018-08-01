@@ -1,3 +1,9 @@
+Release 8 (2017-08-01)
+----------------------
+Add Elasticsearch Loader 0.10.2 image (#78)
+Expose nsq_pubsub in the docker compose example (#76)
+Fix travis condition when publishing (#72)
+
 Release 7 (2017-07-18)
 ----------------------
 Add Stream Enrich 0.18.0 image (#67)
