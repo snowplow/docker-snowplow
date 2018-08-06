@@ -12,6 +12,7 @@ This repository contains the Docker images for the following Snowplow components
 - [Elasticsearch Loader][es]
 - [S3 Loader][s3]
 - [Iglu Server][iglu-server]
+- [Piinguin Server][piinguin-server]
 
 They are published in the [`snowplow-docker-registry.bintray.io`][registry] docker registry.
 
@@ -34,6 +35,9 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/s3-loader:0.6.0
 
 # Iglu Server image
 docker pull snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.3.0
+
+# Piinguin Server image
+docker pull snowplow-docker-registry.bintray.io/snowplow/piinguin-server:0.1.1
 ```
 
 ## Building
@@ -59,6 +63,9 @@ docker build -t snowplow/s3-loader:0.6.0 s3-loader/0.6.0
 
 # Iglu Server image
 docker build -t snowplow/iglu-server:0.3.0 iglu-server/0.3.0
+
+# Piinguin Server image
+docker build -t snowplow/piinguin-server:0.1.1 piinguin-server/0.1.1
 ```
 
 ## Running
@@ -114,6 +121,18 @@ docker run \
   --config /snowplow/config/application.conf
 ```
 
+In the case of the piinguin server there is no configuration file so you can run it simply with (if changing the port for the server, you may also need to publish a different port in the docker host):
+
+```bash
+$ docker run \
+  -d \
+  piinguin-server:${VERSION} \
+  -h <interface e.g. 0.0.0.0>
+  -p 8080
+  -t <piinguin-dynamo-table>
+```
+
+
 You can find more information in the readme for each image:
 
 - [Scala Stream Collector readme][ssc-readme]
@@ -121,6 +140,7 @@ You can find more information in the readme for each image:
 - [Elasticsearch Loader readme][es-readme]
 - [S3 Loader readme][s3-readme]
 - [Iglu Server readme][iglu-server-readme]
+- [Piinguin Server readme][piinguin-server-readme]
 
 There is a Docker Compose example in the [example folder][example]. Iglu Server also
 has a Docker Compose example in a [separate example folder][iglu-example].
@@ -180,3 +200,5 @@ limitations under the License.
 
 [license-image]: http://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: http://www.apache.org/licenses/LICENSE-2.0
+[piinguin-server]: https://github.com/snowplow-incubator/piinguin
+[piinguin-server-readme]: https://github.com/snowplow-incubator/piinguin
