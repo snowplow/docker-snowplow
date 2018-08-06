@@ -17,6 +17,14 @@ services:
       - "4150:4150"
       - "4151:4151"
 
+  nsq_pubsub:
+    image: nsqio/nsq
+    command: /nsq_pubsub --lookupd-http-address=nsqlookupd:4161 --http-address=0.0.0.0:8081
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "8081:8081"
+
   nsqadmin:
     image: nsqio/nsq
     command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
