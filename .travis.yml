@@ -22,6 +22,7 @@ env:
   - IMG=s3-loader/0.6.0
   - IMG=elasticsearch-loader/0.10.1
   - IMG=iglu-server/0.3.0
+  - IMG=piinguin-server/0.1.1
   global:
   # BINTRAY_SNOWPLOW_DOCKER_USER
   - secure: IcBMTopBAIzGlWNgS7dw0iNmvFhd2dgSn/Y1mt6hXnzLrr7SDryRuxPqemsCBLIlf4xtpgHvuOoo+7jYywtAOqyHQ+EOnR5eU8/28v+Z8zd/Djnw0Sv10RV5oMS6ejh9gGS4WDNPvf9M1sfP5p+0gA0p68dNeObLDT4TwpG2pdpeEuqQ3RMGCQc+tb3Q26K6aUPXeIgAHUyIEgHtzxxfgrGNwSmxdb6npsWTUttKpQkJudGRk17xXW67Dd0PKLWJkDpien/lbkLIBK8MlwaH03NMawGcTChgM2njcqElqz1b46wxl1ATcVV2T7A6YPYZxb012P8j/KUZ6MLhdDFNhmz/jIk6caEZ3x4AH2Q0qN8C9Hn70yMN8gAliBeUN4pjLpKnD8t5HgCE+90EufppcQRCfCJhSk9xmegTaikan3QZCN09vwSctIBu4AeWYqctql6bLhNWguakbRIyk9feogmxqbn2HSoFpRrAEqXXv9jFKJrKm2UNKuLbXCvyoYqjAhxTPn7OMAY30wqsVSUu5gSt1fO0Pd+5H8yq44Ul3jROgYKM5NlLWUY+u8qp6KKm2zXQ2LFlr8rzZ2ar5pI9zZiABDMnRRUdAXDTnpDw2HtBvngGXhyfr/irrzach0z/f5YwHL7WVf9Wu7MqoVpexdDqThNGip4ansIikrC57LE=
@@ -70,3 +71,9 @@ deploy:
   on:
     tags: true
     condition: '"$(.travis/is_release_tag.sh iglu-server $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine'
+- provider: script
+  script: ./.travis/deploy.sh piinguin-server $TRAVIS_TAG
+  skip_cleanup: true
+  on:
+    tags: true
+    condition: '"$(.travis/is_release_tag.sh piinguin-server $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine'
