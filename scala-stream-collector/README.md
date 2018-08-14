@@ -35,7 +35,7 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 Running the container without arguments will print out its usage:
 
 ```bash
-$ VERSION=0.13.0
+$ VERSION=0.14.0
 $ docker run snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:${VERSION}
 
 snowplow-stream-collector $VERSION
