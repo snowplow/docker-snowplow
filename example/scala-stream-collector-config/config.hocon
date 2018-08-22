@@ -9,7 +9,7 @@ collector {
 
   crossDomain {
     enabled = false
-    domain = "*"
+    domains = ["*"]
     secure = true
   }
 
@@ -25,6 +25,18 @@ collector {
     name = n3pc
     fallbackNetworkUserId = "00000000-0000-4000-A000-000000000000"
     forwardedProtocolHeader = "X-Forwarded-Proto"
+  }
+
+  doNotTrackCookie {
+    enabled = false
+    name = dnt
+    value = 1
+  }
+
+  rootResponse {
+    enabled = false
+    statusCode = 200
+    body = ok
   }
 
   redirectMacro {
