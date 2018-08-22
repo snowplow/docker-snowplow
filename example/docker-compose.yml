@@ -2,14 +2,14 @@ version: "3"
 
 services:
   nsqlookupd:
-    image: nsqio/nsq
+    image: nsqio/nsq:v1.0.0-compat
     command: /nsqlookupd
     ports:
       - "4160:4160"
       - "4161:4161"
 
   nsqd:
-    image: nsqio/nsq
+    image: nsqio/nsq:v1.0.0-compat
     command: /nsqd --lookupd-tcp-address=nsqlookupd:4160
     depends_on:
       - nsqlookupd
@@ -18,7 +18,7 @@ services:
       - "4151:4151"
 
   nsq_pubsub:
-    image: nsqio/nsq
+    image: nsqio/nsq:v1.0.0-compat
     command: /nsq_pubsub --lookupd-http-address=nsqlookupd:4161 --http-address=0.0.0.0:8081
     depends_on:
       - nsqlookupd
@@ -26,7 +26,7 @@ services:
       - "8081:8081"
 
   nsqadmin:
-    image: nsqio/nsq
+    image: nsqio/nsq:v1.0.0-compat
     command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
     depends_on:
       - nsqlookupd
