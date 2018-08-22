@@ -1,3 +1,10 @@
+Release 9 (2017-08-22)
+----------------------
+Add Scala Stream Collector 0.14.0 image (#80)
+Add Stream Enrich 0.19.0 image (#81)
+Add v1.0.0-compat tag to the nsq images in the example (#84)
+Use SSC 0.14.0 and SE 0.19.0 in the Docker Compose example (#82)
+
 Release 8 (2017-08-06)
 ----------------------
 Add piinguin server image (#47)
