@@ -2,7 +2,7 @@
 set -e
 
 # Make sure we run the server as the snowplow user
-exec su-exec snowplow:snowplow /usr/bin/java \
+exec gosu snowplow:snowplow /usr/bin/java \
   $SP_JAVA_OPTS -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap \
   -jar ${SNOWPLOW_BIN_PATH}/piinguin-server-assembly-${PIINGUIN_SERVER_VERSION}.jar \
   -h $PIINGUIN_HOST -p $PIINGUIN_PORT -t $PIINGUIN_DYNAMO_TABLE "$@"
