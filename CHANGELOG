@@ -1,3 +1,9 @@
+Release 10 (2018-08-31)
+----------------------
+Fix entrypoint script on piinguin for new base image (#86)
+Fix README files to include gosu (#88)
+Fix CHANGELOG year in last three releases (#90)
+
 Release 9 (2018-08-22)
 ----------------------
 Add Scala Stream Collector 0.14.0 image (#80)
