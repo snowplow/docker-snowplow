@@ -17,7 +17,7 @@ This image is based on [the base image][base-image] which leverages
 
 Stream Enrich runs under [dumb-init][dumb-init] which handles reaping zombie processes
 and forwards signals on to all processes running in the container. This image also uses
-[su-exec][su-exec], as a sudo replacement, to run Stream Enrich as the non-root `snowplow` user.
+[su-exec][su-exec] or [gosu][gosu], as a sudo replacement, to run Stream Enrich as the non-root `snowplow` user.
 
 The container exposes the `/snowplow/config` volume to store the enrich configuration. If this
 folder is bind mounted then ownership will be changed to the `snowplow` user.
@@ -100,6 +100,7 @@ limitations under the License.
 [stream-enrich]: https://github.com/snowplow/snowplow/tree/master/3-enrich/stream-enrich
 [dumb-init]: https://github.com/Yelp/dumb-init
 [su-exec]: https://github.com/ncopa/su-exec
+[gosu]: https://github.com/tianon/gosu
 
 [jvm-docker-article]: https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
 

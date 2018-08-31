@@ -11,7 +11,7 @@ This folder contains
 
 The Piinguin Server runs under [dumb-init][dumb-init] which handles reaping zombie processes
 and forwards signals on to all processes running in the container. This image also uses
-[su-exec][su-exec], as a sudo replacement, to run the Piinguin Server as the non-root `snowplow` user.
+[su-exec][su-exec] or [gosu][gosu], as a sudo replacement, to run the Piinguin Server as the non-root `snowplow` user.
 
 The `-XX:+UnlockExperimentalVMOptions` and `-XX:+UseCGroupMemoryLimitForHeap` JVM options will be
 automatically provided when launching the server in order to make the JVM adhere to the memory
@@ -100,3 +100,4 @@ limitations under the License.
 [dumb-init]: https://github.com/Yelp/dumb-init
 [su-exec]: https://github.com/ncopa/su-exec
 [jvm-docker-article]: https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
+[gosu]: https://github.com/tianon/gosu
