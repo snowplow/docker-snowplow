@@ -4,6 +4,7 @@ This folder contains
 
 * docker images of [Iglu Server](iglu-server)
   * `0.3.0`
+  * `0.4.0`
 * a docker compose example to run [Iglu Server](iglu-server) with [Postgres](https://github.com/docker-library/postgres)
 
 ## Introduction
@@ -36,7 +37,7 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 3) Build image    
 
     ```
-    $ VERSION=0.3.0
+    $ VERSION=0.4.0
     $ docker build -t iglu-server:${VERSION} $VERSION
     ```
 
