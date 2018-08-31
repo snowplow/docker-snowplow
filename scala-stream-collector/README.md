@@ -17,7 +17,7 @@ This image is based on [the base image][base-image] which leverages
 
 The Scala Stream Collector runs under [dumb-init][dumb-init] which handles reaping zombie processes
 and forwards signals on to all processes running in the container. This image also uses
-[su-exec][su-exec], as a sudo replacement, to run the collector as the non-root `snowplow` user.
+[su-exec][su-exec] or [gosu][gosu], as a sudo replacement, to run the collector as the non-root `snowplow` user.
 
 The container exposes the `/snowplow/config` volume to store the collector configuration. If this
 folder is bind mounted then ownership will be changed to the `snowplow` user.
@@ -92,6 +92,7 @@ limitations under the License.
 [ssc]: https://github.com/snowplow/snowplow/tree/master/2-collectors/scala-stream-collector
 [dumb-init]: https://github.com/Yelp/dumb-init
 [su-exec]: https://github.com/ncopa/su-exec
+[gosu]: https://github.com/tianon/gosu
 
 [jvm-docker-article]: https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
 
