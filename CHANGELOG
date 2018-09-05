@@ -1,5 +1,9 @@
+Release 11 (2018-09-05)
+-----------------------
+Add Iglu Server 0.4.0 image (#74)
+
 Release 10 (2018-08-31)
-----------------------
+-----------------------
 Fix entrypoint script on piinguin for new base image (#86)
 Fix README files to include gosu (#88)
 Fix CHANGELOG year in last three releases (#90)
