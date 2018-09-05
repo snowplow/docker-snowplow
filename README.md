@@ -34,7 +34,7 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:0.
 docker pull snowplow-docker-registry.bintray.io/snowplow/s3-loader:0.6.0
 
 # Iglu Server image
-docker pull snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.3.0
+docker pull snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.4.0
 
 # Piinguin Server image
 docker pull snowplow-docker-registry.bintray.io/snowplow/piinguin-server:0.1.1
@@ -62,7 +62,7 @@ docker build -t snowplow/elasticsearch-loader:0.10.2 elasticsearch-loader/0.10.2
 docker build -t snowplow/s3-loader:0.6.0 s3-loader/0.6.0
 
 # Iglu Server image
-docker build -t snowplow/iglu-server:0.3.0 iglu-server/0.3.0
+docker build -t snowplow/iglu-server:0.4.0 iglu-server/0.4.0
 
 # Piinguin Server image
 docker build -t snowplow/piinguin-server:0.1.1 piinguin-server/0.1.1
@@ -116,8 +116,8 @@ docker run \
 # Iglu Server
 docker run \
   -v ${PWD}/iglu-server-config:/snowplow/config \
-  snowplow/iglu-server:0.3.0 \ # if you have built the image
-  # snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.3.0 if you have pulled the image
+  snowplow/iglu-server:0.4.0 \ # if you have built the image
+  # snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.4.0 if you have pulled the image
   --config /snowplow/config/application.conf
 ```
 
