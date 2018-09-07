@@ -36,6 +36,9 @@ fi
 for platform in 'google-pubsub' 'kafka' 'kinesis' 'nsq'; do
     if [ -d "${platform}" ]; then
         cd $platform
+    # no enrich for pubsub
+    elif [ "${platform}" = 'google-pubsub' ] && [ "${project}" = 'stream-enrich' ]; then
+        continue
     else
         echo "Warning! Release ${project} ${release} ${platform} doesn't have an associated folder"
         exit 1
