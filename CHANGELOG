@@ -1,3 +1,10 @@
+Release 12 (2018-09-07)
+-----------------------
+Add Stream Enrich 0.19.1 image (#94)
+Use Stream Enrich 0.19.1 in the Docker Compose example (#95)
+Add a cache ttl to the example resolver (#85)
+Document the nsq_pubsub endpoint in the example README (#93)
+
 Release 11 (2018-09-05)
 -----------------------
 Add Iglu Server 0.4.0 image (#74)
