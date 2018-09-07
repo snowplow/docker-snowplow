@@ -10,12 +10,15 @@ This Docker Compose example bundles the following Snowplow components in two dis
 - [Stream Enrich][se]
 
 Additionally, they make use of [NSQ][nsq] topics to store events, the NSQ components are running
-in three different containers:
+in four different containers:
 
 - nsqd: the daemon in charge of receiving, queueing and delivering messages
 - nsqlookupd: the daemon taking care of managing who produces and consumes what
 - nsqadmin: a web UI to perform administrative tasks as well as giving an overview of the NSQ
-topology
+topology, its web interface is available at port 4171
+- nsq_pubsub: which lets you consume NSQ topics given a subscription channel you can create through
+the nsqadmin UI. For example, to consume your bad rows, given a channel named `bad_channel` you can
+hit the `http://127.0.0.1:8081/sub?topic=bad&channel=bad_channel` endpoint
 
 ## Usage
 
@@ -23,7 +26,7 @@ Once you have modified the configuration files to your liking, you can launch th
 with:
 
 ```bash
-$ docker swarm init
+$ docker swarm init # only required the first time
 $ docker stack deploy -c docker-compose.yml snowplow-realtime
 ```
 
