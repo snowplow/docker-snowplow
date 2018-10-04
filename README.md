@@ -12,6 +12,7 @@ This repository contains the Docker images for the following Snowplow components
 - [Elasticsearch Loader][es]
 - [S3 Loader][s3]
 - [Iglu Server][iglu-server]
+- [Igluctl][igluctl]
 - [Piinguin Server][piinguin-server]
 - [EmrEtlRunner][emr-etl-runner]
 
@@ -36,6 +37,9 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/s3-loader:0.6.0
 
 # Iglu Server image
 docker pull snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.4.0
+
+# Iglu Igluctl image
+docker pull snowplow-docker-registry.bintray.io/snowplow/igluctl:0.6.0
 
 # Piinguin Server image
 docker pull snowplow-docker-registry.bintray.io/snowplow/piinguin-server:0.1.1
@@ -67,6 +71,9 @@ docker build -t snowplow/s3-loader:0.6.0 s3-loader/0.6.0
 
 # Iglu Server image
 docker build -t snowplow/iglu-server:0.4.0 iglu-server/0.4.0
+
+# Igluctl
+docker build -t snowplow/igluctl:0.6.0 igluctl/0.6.0
 
 # Piinguin Server image
 docker build -t snowplow/piinguin-server:0.1.1 piinguin-server/0.1.1
@@ -150,7 +157,6 @@ $ docker run \
   -t <piinguin-dynamo-table>
 ```
 
-
 You can find more information in the readme for each image:
 
 - [Scala Stream Collector readme][ssc-readme]
@@ -158,6 +164,7 @@ You can find more information in the readme for each image:
 - [Elasticsearch Loader readme][es-readme]
 - [S3 Loader readme][s3-readme]
 - [Iglu Server readme][iglu-server-readme]
+- [Igluctl][igluctl-readme]
 - [Piinguin Server readme][piinguin-server-readme]
 - [EmrEtlRunner readme][emr-etl-runner-readme]
 
@@ -189,6 +196,7 @@ limitations under the License.
 [es]: https://github.com/snowplow/snowplow-elasticsearch-loader/
 [s3]: https://github.com/snowplow/snowplow-s3-loader/
 [iglu-server]: https://github.com/snowplow/iglu/tree/master/2-repositories/iglu-server
+[igluctl]: https://github.com/snowplow/iglu/tree/master/0-common/igluctl
 [piinguin-server]: https://github.com/snowplow-incubator/piinguin
 [emr-etl-runner]: https://github.com/snowplow/snowplow/tree/master/3-enrich/emr-etl-runner
 
@@ -204,6 +212,7 @@ limitations under the License.
 [es-readme]: https://github.com/snowplow/snowplow-docker/tree/master/elasticsearch-loader
 [s3-readme]: https://github.com/snowplow/snowplow-docker/tree/master/s3-loader
 [iglu-server-readme]: https://github.com/snowplow/snowplow-docker/tree/master/iglu-server
+[igluctl-readme]: https://github.com/snowplow/snowplow-docker/tree/master/igluctl
 [piinguin-server-readme]: https://github.com/snowplow-incubator/piinguin
 [emr-etl-runner-readme]: https://github.com/snowplow/snowplow-docker/tree/master/emr-etl-runner
 
