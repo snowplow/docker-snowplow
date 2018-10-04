@@ -94,7 +94,7 @@ limitations under the License.
 
 [base-image]: https://github.com/snowplow/snowplow-docker/tree/master/base-alpine
 [docker-compose-example]: https://github.com/snowplow/snowplow-docker/tree/master/example
-[alpine-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/alpine/Dockerfile
+[alpine-image]: https://github.com/docker-library/openjdk/blob/master/8/jdk/alpine/Dockerfile
 [debian-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/slim/Dockerfile
 
 [stream-enrich]: https://github.com/snowplow/snowplow/tree/master/3-enrich/stream-enrich

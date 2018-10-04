@@ -12,6 +12,7 @@ This repository contains the Docker images for the following Snowplow components
 - [Elasticsearch Loader][es]
 - [S3 Loader][s3]
 - [Iglu Server][iglu-server]
+- [Igluctl][igluctl]
 - [Piinguin Server][piinguin-server]
 
 They are published in the [`snowplow-docker-registry.bintray.io`][registry] docker registry.
@@ -35,6 +36,9 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/s3-loader:0.6.0
 
 # Iglu Server image
 docker pull snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.4.0
+
+# Iglu Igluctl image
+docker pull snowplow-docker-registry.bintray.io/snowplow/igluctl:0.5.0
 
 # Piinguin Server image
 docker pull snowplow-docker-registry.bintray.io/snowplow/piinguin-server:0.1.1
@@ -63,6 +67,9 @@ docker build -t snowplow/s3-loader:0.6.0 s3-loader/0.6.0
 
 # Iglu Server image
 docker build -t snowplow/iglu-server:0.4.0 iglu-server/0.4.0
+
+# Igluctl
+docker build -t snowplow/igluctl:0.6.0 igluctl/0.6.0
 
 # Piinguin Server image
 docker build -t snowplow/piinguin-server:0.1.1 piinguin-server/0.1.1
@@ -140,6 +147,7 @@ You can find more information in the readme for each image:
 - [Elasticsearch Loader readme][es-readme]
 - [S3 Loader readme][s3-readme]
 - [Iglu Server readme][iglu-server-readme]
+- [Igluctl][igluctl-readme]
 - [Piinguin Server readme][piinguin-server-readme]
 
 There is a Docker Compose example in the [example folder][example]. Iglu Server also
@@ -170,6 +178,7 @@ limitations under the License.
 [es]: https://github.com/snowplow/snowplow-elasticsearch-loader/
 [s3]: https://github.com/snowplow/snowplow-s3-loader/
 [iglu-server]: https://github.com/snowplow/iglu/tree/master/2-repositories/iglu-server
+[igluctl]: https://github.com/snowplow/iglu/tree/master/0-common/igluctl
 
 [ssc-config]: https://github.com/snowplow/snowplow/blob/master/2-collectors/scala-stream-collector/examples/config.hocon.sample
 [se-config]: https://github.com/snowplow/snowplow/blob/master/3-enrich/stream-enrich/examples/config.hocon.sample
@@ -182,6 +191,7 @@ limitations under the License.
 [es-readme]: https://github.com/snowplow/snowplow-docker/tree/master/elasticsearch-loader
 [s3-readme]: https://github.com/snowplow/snowplow-docker/tree/master/s3-loader
 [iglu-server-readme]: https://github.com/snowplow/snowplow-docker/tree/master/iglu-server
+[igluctl-readme]: https://github.com/snowplow/snowplow-docker/tree/master/igluctl
 
 [example]: https://github.com/snowplow/snowplow-docker/tree/master/example
 [iglu-example]: https://github.com/snowplow/snowplow-docker/tree/master/iglu-server/example
