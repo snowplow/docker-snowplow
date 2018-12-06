@@ -13,6 +13,7 @@ This repository contains the Docker images for the following Snowplow components
 - [S3 Loader][s3]
 - [Iglu Server][iglu-server]
 - [Piinguin Server][piinguin-server]
+- [EmrEtlRunner][emr-etl-runner]
 
 They are published in the [`snowplow-docker-registry.bintray.io`][registry] docker registry.
 
@@ -38,6 +39,9 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.4.0
 
 # Piinguin Server image
 docker pull snowplow-docker-registry.bintray.io/snowplow/piinguin-server:0.1.1
+
+# EmrEtlRunner image
+docker pull snowplow-docker-registry.bintray.io/snowplow/emr-etl-runner:r109_lambaesis
 ```
 
 ## Building
@@ -66,6 +70,9 @@ docker build -t snowplow/iglu-server:0.4.0 iglu-server/0.4.0
 
 # Piinguin Server image
 docker build -t snowplow/piinguin-server:0.1.1 piinguin-server/0.1.1
+
+# EmrEtlRunner image
+docker build -t snowplow/emr-etl-runner:r109_lambaesis emr-etl-runner/r109_lambaesis
 ```
 
 ## Running
@@ -78,6 +85,7 @@ following locations:
 - [Elasticsearch Loader configuration][es-config]
 - [S3 Loader configuration][s3-config]
 - [Iglu Server configuration][iglu-server-config]
+- [EmrEtlRunner configuration][emr-etl-runner-config]
 
 Next, you can run a container for each component by mounting your configuration directory:
 
@@ -119,6 +127,16 @@ docker run \
   snowplow/iglu-server:0.4.0 \ # if you have built the image
   # snowplow-docker-registry.bintray.io/snowplow/iglu-server:0.4.0 if you have pulled the image
   --config /snowplow/config/application.conf
+
+# EmrEtlRunner
+docker run \
+  -v ${PWD}/emr-etl-runner-config:/snowplow/config \
+  snowplow/emr-etl-runner:r109_lambaesis \ # if you have built the image
+  # snowplow-docker-registry.bintray.io/snowplow/emr-etl-runner:r109_lambaesis if you have pulled the image
+  run \
+  --config /snowplow/config/config.yaml \
+  --resolver file:/snowplow/config/resolver.json \
+  --enrichments file:/snowplow/config/enrichments/
 ```
 
 In the case of the piinguin server there is no configuration file so you can run it simply with (if changing the port for the server, you may also need to publish a different port in the docker host):
@@ -141,6 +159,7 @@ You can find more information in the readme for each image:
 - [S3 Loader readme][s3-readme]
 - [Iglu Server readme][iglu-server-readme]
 - [Piinguin Server readme][piinguin-server-readme]
+- [EmrEtlRunner readme][emr-etl-runner-readme]
 
 There is a Docker Compose example in the [example folder][example]. Iglu Server also
 has a Docker Compose example in a [separate example folder][iglu-example].
@@ -170,18 +189,23 @@ limitations under the License.
 [es]: https://github.com/snowplow/snowplow-elasticsearch-loader/
 [s3]: https://github.com/snowplow/snowplow-s3-loader/
 [iglu-server]: https://github.com/snowplow/iglu/tree/master/2-repositories/iglu-server
+[piinguin-server]: https://github.com/snowplow-incubator/piinguin
+[emr-etl-runner]: https://github.com/snowplow/snowplow/tree/master/3-enrich/emr-etl-runner
 
 [ssc-config]: https://github.com/snowplow/snowplow/blob/master/2-collectors/scala-stream-collector/examples/config.hocon.sample
 [se-config]: https://github.com/snowplow/snowplow/blob/master/3-enrich/stream-enrich/examples/config.hocon.sample
 [es-config]: https://github.com/snowplow/snowplow-elasticsearch-loader/blob/master/examples/config.hocon.sample
 [s3-config]: https://github.com/snowplow/snowplow-s3-loader/blob/master/examples/config.hocon.sample
 [iglu-server-config]: https://github.com/snowplow/snowplow-docker/blob/master/iglu-server/example/config/application.conf
+[emr-etl-runner-config]: https://github.com/snowplow/snowplow/blob/master/3-enrich/emr-etl-runner/config/config.yml.sample
 
 [ssc-readme]: https://github.com/snowplow/snowplow-docker/tree/master/scala-stream-collector
 [se-readme]: https://github.com/snowplow/snowplow-docker/tree/master/stream-enrich
 [es-readme]: https://github.com/snowplow/snowplow-docker/tree/master/elasticsearch-loader
 [s3-readme]: https://github.com/snowplow/snowplow-docker/tree/master/s3-loader
 [iglu-server-readme]: https://github.com/snowplow/snowplow-docker/tree/master/iglu-server
+[piinguin-server-readme]: https://github.com/snowplow-incubator/piinguin
+[emr-etl-runner-readme]: https://github.com/snowplow/snowplow-docker/tree/master/emr-etl-runner
 
 [example]: https://github.com/snowplow/snowplow-docker/tree/master/example
 [iglu-example]: https://github.com/snowplow/snowplow-docker/tree/master/iglu-server/example
@@ -200,5 +224,3 @@ limitations under the License.
 
 [license-image]: http://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: http://www.apache.org/licenses/LICENSE-2.0
-[piinguin-server]: https://github.com/snowplow-incubator/piinguin
-[piinguin-server-readme]: https://github.com/snowplow-incubator/piinguin
