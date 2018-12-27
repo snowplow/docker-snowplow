@@ -7,10 +7,9 @@ This folder contains the Docker images for [the EmrEtlRunner][emretlrunner].
 This image is based on [the debian base image][debian-base-image] which leverages
 [the Java 8 Debian image][debian-image] due to a [JRuby bug][jruby-bug] still unsolved.
 
-The EmrEtlRunner uses [gosu][gosu], as a sudo replacement, to run the
-collector as the non-root `snowplow` user.
+The EmrEtlRunner uses [gosu][gosu], as a sudo replacement, to run as the non-root `snowplow` user.
 
-The container exposes the `/snowplow/config` volume to store the collector configuration. If this
+The container exposes the `/snowplow/config` volume to store the EmrEtlRunner configuration. If this
 folder is bind mounted then ownership will be changed to the `snowplow` user.
 
 ## Usage
@@ -36,7 +35,7 @@ Global options are:
     -v, --version                    Show version
 ```
 
-Alternatively, we can mount a configuration folder, publish port 80, and run the collector:
+Alternatively, we can mount a configuration folder and run EmrEtlRunner:
 
 ```bash
 $ docker run \
@@ -50,7 +49,7 @@ $ docker run \
 
 ## Copyright and license
 
-Snowplow::EmrEtlRunner is copyright 2012-2014 Snowplow Analytics Ltd.
+The EmrEtlRunner image is copyright 2018-2018 Snowplow Analytics Ltd.
 
 Licensed under the [Apache License, Version 2.0][license] (the "License");
 you may not use this software except in compliance with the License.
