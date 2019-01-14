@@ -29,8 +29,8 @@ The configuration files are very basic examples, which are deploying the Progres
 4) Retrieve host and port of the Postgres server from the Kuvernetes cluster and modify the application.conf file accordingly (postgres host and port)
 
     `$ kubectl describe nodes`
-    
-    `$ kubectl get services prostgres-srv`
+
+    `$ kubectl get services postgres-srv`
 
 5) Creation of a configmap on the Kubernetes cluster for the Iglu server based on the application.conf file
 
