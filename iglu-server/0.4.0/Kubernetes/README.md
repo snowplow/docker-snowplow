@@ -10,7 +10,7 @@ This folder contains
 
 ## Introduction
 
-The configuration files are very basic examples, which are deploying the Progres server and the Iglu server as NodePort servers on the Kubernetes cluster. For production environments you may want to use load balancer services - the Service configuration in the yaml files need to be changed in this case (type: LoadBalancer).
+The configuration files are very basic examples, which are deploying the Progres server and the Iglu server as NodePort services on the Kubernetes cluster. For production environments you may want to use load balancer services - the Service configuration in the yaml files need to be changed in this case (type: LoadBalancer).
 
 ### Deployement steps
 
@@ -29,6 +29,7 @@ The configuration files are very basic examples, which are deploying the Progres
 4) Retrieve host and port of the Postgres server from the Kuvernetes cluster and modify the application.conf file accordingly (postgres host and port)
 
     `$ kubectl describe nodes`
+    
     `$ kubectl get services prostgres-srv`
 
 5) Creation of a configmap on the Kubernetes cluster for the Iglu server based on the application.conf file
