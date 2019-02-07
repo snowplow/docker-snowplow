@@ -66,7 +66,7 @@ limitations under the License.
 [base-image]: https://github.com/snowplow/snowplow-docker/tree/master/base
 [igluctl]: https://github.com/snowplow/iglu/tree/master/2-repositories/igluctl
 
-[alpine-image]: https://github.com/docker-library/openjdk/blob/master/8/jdk/alpine/Dockerfile
+[alpine-image]: https://github.com/docker-library/openjdk/blob/master/8/jre/alpine/Dockerfile
 [dumb-init]: https://github.com/Yelp/dumb-init
 [su-exec]: https://github.com/ncopa/su-exec
 

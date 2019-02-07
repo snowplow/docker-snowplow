@@ -96,7 +96,7 @@ limitations under the License.
 
 [base-image]: https://github.com/snowplow/snowplow-docker/tree/master/base
 [piinguin-server]: https://github.com/snowplow-incubator/piinguin
-[alpine-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/alpine/Dockerfile
+[alpine-image]: https://github.com/docker-library/openjdk/blob/master/8/jre/alpine/Dockerfile
 [dumb-init]: https://github.com/Yelp/dumb-init
 [su-exec]: https://github.com/ncopa/su-exec
 [jvm-docker-article]: https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
