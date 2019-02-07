@@ -82,7 +82,7 @@ $ docker run \
 
 ## Copyright & License
 
-The Piinguin Server image &copy; 2018 Snowplow Analytics Ltd
+The Piinguin Server image &copy; 2018-2019 Snowplow Analytics Ltd
 
 Licensed under the [Apache License, Version 2.0][license] (the "License");
 you may not use this software except in compliance with the License.
