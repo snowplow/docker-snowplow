@@ -75,7 +75,7 @@ limitations under the License.
 
 [base-image]: https://github.com/snowplow/snowplow-docker/tree/master/base
 [docker-compose-example]: https://github.com/snowplow/snowplow-docker/tree/master/example
-[alpine-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/alpine/Dockerfile
+[alpine-image]: https://github.com/docker-library/openjdk/blob/master/8/jre/alpine/Dockerfile
 
 [s3-loader]: https://github.com/snowplow/snowplow-s3-loader/
 [dumb-init]: https://github.com/Yelp/dumb-init

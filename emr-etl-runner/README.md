@@ -62,7 +62,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 [emr-etl-runner]: https://github.com/snowplow/snowplow/tree/master/3-enrich/emr-etl-runner
-[debian-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/slim/Dockerfile
+[debian-image]: https://github.com/docker-library/openjdk/blob/master/8/jre/slim/Dockerfile
 [debian-base-image]: https://github.com/snowplow/snowplow-docker/tree/develop/base-debian
 [jruby-bug]: https://discourse.snowplowanalytics.com/t/systemcallerror-unknown-error-unknown-error-0-home-ubuntu-netrc/452
 [gosu]: https://github.com/tianon/gosu

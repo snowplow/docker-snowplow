@@ -34,7 +34,7 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 
     `$ cd snowplow-docker/iglu-server/`
 
-3) Build image    
+3) Build image
 
     ```
     $ VERSION=0.4.0
@@ -204,7 +204,7 @@ limitations under the License.
 [docker-compose-example]: https://github.com/snowplow/snowplow-docker/tree/master/iglu-server/example
 [example-config]: https://github.com/snowplow/snowplow-docker/tree/master/iglu-server/example/config/application.conf
 
-[alpine-image]: https://github.com/docker-library/openjdk/blob/master/8-jre/alpine/Dockerfile
+[alpine-image]: https://github.com/docker-library/openjdk/blob/master/8/jre/alpine/Dockerfile
 [dumb-init]: https://github.com/Yelp/dumb-init
 [su-exec]: https://github.com/ncopa/su-exec
 [jvm-docker-article]: https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
