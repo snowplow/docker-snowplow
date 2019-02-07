@@ -180,7 +180,7 @@ has a Docker Compose example in a [separate example folder][iglu-example].
 
 ## Copyright and license
 
-Copyright 2017-2018 Snowplow Analytics Ltd.
+Copyright 2017-2019 Snowplow Analytics Ltd.
 
 Licensed under the [Apache License, Version 2.0][license] (the "License");
 you may not use this software except in compliance with the License.
