@@ -1,3 +1,20 @@
+Release 13 (2019-02-19)
+-----------------------
+Add EmrEtlRunner image (#34)
+Add EmrEtlRunner R112 image (#116)
+Add CI/CD for the EmrEtlRunner image (#107)
+Add igluctl images (#114)
+Version base images (#108)
+Add a contributing guide (#115)
+Add GitHub templates (#105)
+Replace base image links in the different readmes (#113)
+Fix base-debian image test flakiness (#112)
+Add a Kubernetes deployment example for Iglu Server (#117)
+Replace ip lookups with anon ip in the example's enrichments (#102)
+Dowgrade the version of the resolver in the example to 1-0-2 (#99)
+Remove Stream Enrich PubSub deployment (#97)
+Update copyrights to 2019 (#110)
+
 Release 12 (2018-09-07)
 -----------------------
 Add Stream Enrich 0.19.1 image (#94)
