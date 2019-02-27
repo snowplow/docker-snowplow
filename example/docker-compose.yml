@@ -34,7 +34,7 @@ services:
       - "4171:4171"
 
   scala-stream-collector:
-    image: snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:0.14.0
+    image: snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:0.15.0
     command: [ "--config", "/snowplow/config/config.hocon" ]
     depends_on:
       - nsqd

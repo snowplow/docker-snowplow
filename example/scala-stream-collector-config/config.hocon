@@ -44,6 +44,12 @@ collector {
     placeholder = "[TOKEN]"
   }
 
+  cors {
+    accessControlMaxAge = 10 seconds
+  }
+
+  prometheusMetrics.enabled = false
+
   streams {
     good = raw
     bad = bad
