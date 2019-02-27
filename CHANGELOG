@@ -1,3 +1,11 @@
+Release 14 (2019-02-27)
+-----------------------
+Add images for the Scala Stream Collector 0.15.0 (#119)
+Add images for Stream Enrich 0.20.0 (#118)
+Add image for EmrEtlRunner R113 (#120)
+Use the Scala Stream Collector 0.15.0 in the Docker Compose example (#122)
+Use Stream Enrich 0.20.0 in the Docker Compose example (#121)
+
 Release 13 (2019-02-19)
 -----------------------
 Add EmrEtlRunner image (#34)
