@@ -45,7 +45,7 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/igluctl:0.6.0
 docker pull snowplow-docker-registry.bintray.io/snowplow/piinguin-server:0.1.1
 
 # EmrEtlRunner image
-docker pull snowplow-docker-registry.bintray.io/snowplow/emr-etl-runner:r112_baalbek
+docker pull snowplow-docker-registry.bintray.io/snowplow/emr-etl-runner:r113_filitosa
 ```
 
 ## Building
@@ -79,7 +79,7 @@ docker build -t snowplow/igluctl:0.6.0 igluctl/0.6.0
 docker build -t snowplow/piinguin-server:0.1.1 piinguin-server/0.1.1
 
 # EmrEtlRunner image
-docker build -t snowplow/emr-etl-runner:r112_baalbek emr-etl-runner/r112_baalbek
+docker build -t snowplow/emr-etl-runner:r113_filitosa emr-etl-runner/r113_filitosa
 ```
 
 ## Running
@@ -138,8 +138,8 @@ docker run \
 # EmrEtlRunner
 docker run \
   -v ${PWD}/emr-etl-runner-config:/snowplow/config \
-  snowplow/emr-etl-runner:r112_baalbek \ # if you have built the image
-  # snowplow-docker-registry.bintray.io/snowplow/emr-etl-runner:r112_baalbek if you have pulled the image
+  snowplow/emr-etl-runner:r113_filitosa \ # if you have built the image
+  # snowplow-docker-registry.bintray.io/snowplow/emr-etl-runner:r113_filitosa if you have pulled the image
   run \
   --config /snowplow/config/config.yaml \
   --resolver file:/snowplow/config/resolver.json \
