@@ -59,7 +59,7 @@ services:
       - "SP_JAVA_OPTS=-Xms512m -Xmx512m"
 
   stream-enrich:
-    image: snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.19.1
+    image: snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.20.0
     command: [
       "--config", "/snowplow/config/config.hocon",
       "--resolver", "file:/snowplow/config/resolver.json",
