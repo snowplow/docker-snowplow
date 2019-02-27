@@ -24,7 +24,7 @@ You can pull the images from the registry directly:
 
 ```bash
 # NSQ Scala Stream Collector image, there are others available for Kinesis, Kafka and Google PubSub
-docker pull snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:0.14.0
+docker pull snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:0.15.0
 
 # NSQ Stream Enrich image, there are others available for Kinesis, Kafka and Google PubSub
 docker pull snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.20.0
@@ -58,7 +58,7 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/base-alpine:0.2.0
 docker pull snowplow-docker-registry.bintray.io/snowplow/base-debian:0.1.0
 
 # NSQ Scala Stream Collector image, there are others available for Kinesis, Kafka and Google PubSub
-docker build -t snowplow/scala-stream-collector-nsq:0.14.0 scala-stream-collector/0.14.0/nsq
+docker build -t snowplow/scala-stream-collector-nsq:0.15.0 scala-stream-collector/0.15.0/nsq
 
 # NSQ Stream Enrich image, there are others available for Kinesis, Kafka and Google PubSub
 docker build -t snowplow/stream-enrich-nsq:0.20.0 stream-enrich/0.20.0/nsq
@@ -100,8 +100,8 @@ Next, you can run a container for each component by mounting your configuration 
 # NSQ Scala Stream Collector container, there are others available for Kinesis, Kafka and Google PubSub
 docker run \
   -v $PWD/scala-stream-collector-config:/snowplow/config \
-  snowplow/scala-stream-collector-nsq:0.14.0 \ # if you have built the image
-  # snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:0.14.0 if you have pulled the image
+  snowplow/scala-stream-collector-nsq:0.15.0 \ # if you have built the image
+  # snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:0.15.0 if you have pulled the image
   --config /snowplow/config/config.hocon
 
 # NSQ Stream Enrich container, there are others available for Kinesis, Kafka and Google PubSub
