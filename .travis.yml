@@ -15,9 +15,9 @@ env:
   - IMG=scala-stream-collector/0.14.0/kafka
   - IMG=scala-stream-collector/0.14.0/kinesis
   - IMG=scala-stream-collector/0.14.0/nsq
-  - IMG=stream-enrich/0.19.1/kafka
-  - IMG=stream-enrich/0.19.1/kinesis
-  - IMG=stream-enrich/0.19.1/nsq
+  - IMG=stream-enrich/0.20.0/kafka
+  - IMG=stream-enrich/0.20.0/kinesis
+  - IMG=stream-enrich/0.20.0/nsq
   - IMG=s3-loader/0.6.0
   - IMG=elasticsearch-loader/0.10.2
   - IMG=iglu-server/0.4.0
