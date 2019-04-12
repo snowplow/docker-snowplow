@@ -100,6 +100,7 @@ Next, you can run a container for each component by mounting your configuration 
 # NSQ Scala Stream Collector container, there are others available for Kinesis, Kafka and Google PubSub
 docker run \
   -v $PWD/scala-stream-collector-config:/snowplow/config \
+  -p 8080:8080 \
   snowplow/scala-stream-collector-nsq:0.15.0 \ # if you have built the image
   # snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:0.15.0 if you have pulled the image
   --config /snowplow/config/config.hocon

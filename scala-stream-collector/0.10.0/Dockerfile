@@ -16,7 +16,7 @@ RUN mkdir -p /tmp/build && \
     rm -rf /tmp/build
 
 # Port used by the collector.
-EXPOSE 80
+EXPOSE 8080
 
 # Defines an entrypoint script delegating the lauching of the collector to the snowplow user.
 # The script uses dumb-init as the top-level process.
