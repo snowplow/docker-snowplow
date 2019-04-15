@@ -22,7 +22,7 @@ and forwards signals on to all processes running in the container. This image al
 The container exposes the `/snowplow/config` volume to store the collector configuration. If this
 folder is bind mounted then ownership will be changed to the `snowplow` user.
 
-The container exposes the port 80 to be able to receive requests.
+The container exposes the port 8080 to be able to receive requests.
 
 The `-XX:+UnlockExperimentalVMOptions` and `-XX:+UseCGroupMemoryLimitForHeap` JVM options will be
 automatically provided when launching the collector in order to make the JVM adhere to the memory
@@ -46,13 +46,13 @@ Usage: snowplow-stream-collector [options]
   --config <filename>
 ```
 
-Alternatively, we can mount a configuration folder, publish port 80, and run the collector:
+Alternatively, we can mount a configuration folder, publish port 8080, and run the collector:
 
 ```bash
 $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
-  -p 80:80 \
+  -p 8080:8080 \
   snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:${VERSION} \
   --config /snowplow/config/config.hocon
 ```
@@ -63,7 +63,7 @@ If we want to specify additional JVM options, we can add the `SP_JAVA_OPTS` envi
 $ docker run \
   -d \
   -v ${PWD}/config:/snowplow/config \
-  -p 80:80 \
+  -p 8080:8080 \
   -e 'SP_JAVA_OPTS=-Xms512m -Xmx512m' \
   snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:${VERSION} \
   --config /snowplow/config/config.hocon
