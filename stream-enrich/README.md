@@ -33,7 +33,7 @@ Additional JVM options can be set through the `SP_JAVA_OPTS` environment variabl
 Running the container without arguments will print out its usage:
 
 ```bash
-$ VERSION=0.20.0
+$ VERSION=0.21.0
 $ docker run snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:${VERSION}
 
 snowplow-stream-enrich $VERSION

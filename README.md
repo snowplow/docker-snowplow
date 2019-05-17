@@ -27,7 +27,7 @@ You can pull the images from the registry directly:
 docker pull snowplow-docker-registry.bintray.io/snowplow/scala-stream-collector-nsq:0.15.0
 
 # NSQ Stream Enrich image, there are others available for Kinesis, Kafka and Google PubSub
-docker pull snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.20.0
+docker pull snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.21.0
 
 # Elasticsearch Loader image
 docker pull snowplow-docker-registry.bintray.io/snowplow/elasticsearch-loader:0.10.2
@@ -61,7 +61,7 @@ docker pull snowplow-docker-registry.bintray.io/snowplow/base-debian:0.1.0
 docker build -t snowplow/scala-stream-collector-nsq:0.15.0 scala-stream-collector/0.15.0/nsq
 
 # NSQ Stream Enrich image, there are others available for Kinesis, Kafka and Google PubSub
-docker build -t snowplow/stream-enrich-nsq:0.20.0 stream-enrich/0.20.0/nsq
+docker build -t snowplow/stream-enrich-nsq:0.21.0 stream-enrich/0.21.0/nsq
 
 # Elasticsearch Loader image
 docker build -t snowplow/elasticsearch-loader:0.10.2 elasticsearch-loader/0.10.2
@@ -108,8 +108,8 @@ docker run \
 # NSQ Stream Enrich container, there are others available for Kinesis, Kafka and Google PubSub
 docker run \
   -v $PWD/stream-enrich-config:/snowplow/config \
-  snowplow/stream-enrich-nsq:0.20.0 \ # if you have built the image
-  # snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.20.0 if you have pulled the image
+  snowplow/stream-enrich-nsq:0.21.0 \ # if you have built the image
+  # snowplow-docker-registry.bintray.io/snowplow/stream-enrich-nsq:0.21.0 if you have pulled the image
   --config /snowplow/config/config.hocon \
   --resolver file:/snowplow/config/resolver.json \
   --enrichments file:/snowplow/config/enrichments/ \
