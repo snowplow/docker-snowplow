@@ -17,7 +17,7 @@ this folder is bind mounted then ownership will be changed to the `snowplow` use
 Running the container without arguments will print out its usage:
 
 ```bash
-$ VERSION=r113_filitosa
+$ VERSION=r114_polonnaruwa
 $ docker run snowplow-docker-registry.bintray.io/snowplow/emr-etl-runner:${VERSION}
 
 Usage snowplow-emr-etl-runner [options] [command [options]]
