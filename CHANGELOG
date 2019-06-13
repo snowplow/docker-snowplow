@@ -1,3 +1,7 @@
+Release 17 (2019-06-13)
+-----------------------
+Align deployment for base images (#132)
+
 Release 16 (2019-06-13)
 -----------------------
 Add base-debian:0.2.0 image with JDK 11.0.3 (#130)
