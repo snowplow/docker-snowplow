@@ -10,7 +10,7 @@ script:
 env:
   matrix:
   - IMG=base-alpine/0.2.0
-  - IMG=base-debian/0.1.0
+  - IMG=base-debian/0.2.0
   - IMG=scala-stream-collector/0.15.0/google-pubsub
   - IMG=scala-stream-collector/0.15.0/kafka
   - IMG=scala-stream-collector/0.15.0/kinesis
