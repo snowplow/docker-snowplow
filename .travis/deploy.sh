@@ -26,14 +26,11 @@ curl -X GET \
     https://${docker_repo}/v2/auth > $file
 
 cd $project
-# except for the base image, there is one folder per image version
-if [[ "${project}" != base* ]]; then
-    if [ -d "${release}" ]; then
-        cd $release
-    else
-        echo "Warning! Release ${project} ${release} doesn't have an associated folder"
-        exit 1
-    fi
+if [ -d "${release}" ]; then
+    cd $release
+else
+    echo "Warning! Release ${project} ${release} doesn't have an associated folder"
+    exit 1
 fi
 
 img_tag="snowplow/${project}:${release}"
