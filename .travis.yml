@@ -11,10 +11,10 @@ env:
   matrix:
   - IMG=base-alpine/0.2.0
   - IMG=base-debian/0.2.0
-  - IMG=scala-stream-collector/0.15.0/google-pubsub
-  - IMG=scala-stream-collector/0.15.0/kafka
-  - IMG=scala-stream-collector/0.15.0/kinesis
-  - IMG=scala-stream-collector/0.15.0/nsq
+  - IMG=scala-stream-collector/0.16.0-rc1/google-pubsub
+  - IMG=scala-stream-collector/0.16.0-rc1/kafka
+  - IMG=scala-stream-collector/0.16.0-rc1/kinesis
+  - IMG=scala-stream-collector/0.16.0-rc1/nsq
   - IMG=stream-enrich/0.21.0/kafka
   - IMG=stream-enrich/0.21.0/kinesis
   - IMG=stream-enrich/0.21.0/nsq
