@@ -15,11 +15,16 @@ for opt in "$@"; do
           PARAMS="$PARAMS $opt"
           shift
           ;;
+      --gcpTempLocation=*)
+          BUCKET="${opt#*=}"
+          PARAMS="$PARAMS $opt"
+          shift
+          ;;
       --gcsThreshold=*)
           THRESHOLD="${opt#*=}"
           shift
           ;;
-      --gcsDelay*)
+      --gcsDelay=*)
           DELAY="${opt#*=}"
           shift
           ;;
