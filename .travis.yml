@@ -11,20 +11,8 @@ env:
   matrix:
   - IMG=base-alpine/0.2.0
   - IMG=base-debian/0.2.0
-  - IMG=scala-stream-collector/0.15.0/google-pubsub
-  - IMG=scala-stream-collector/0.15.0/kafka
-  - IMG=scala-stream-collector/0.15.0/kinesis
-  - IMG=scala-stream-collector/0.15.0/nsq
-  - IMG=stream-enrich/0.21.0/kafka
-  - IMG=stream-enrich/0.21.0/kinesis
-  - IMG=stream-enrich/0.21.0/nsq
-  - IMG=s3-loader/0.6.0
-  - IMG=elasticsearch-loader/0.10.2
-  - IMG=iglu-server/0.4.0
-  - IMG=igluctl/0.6.0
   - IMG=piinguin-server/0.1.1
   - IMG=emr-etl-runner/r114_polonnaruwa
-  - IMG=k8s-dataflow/0.1.1
   - IMG=k8s-dataflow/0.2.0
   global:
   # BINTRAY_SNOWPLOW_DOCKER_USER
@@ -37,61 +25,25 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    condition: '"$(.travis/is_release_tag.sh base-alpine $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
+    condition: '"$(.travis/is_release_tag.sh base-alpine $TRAVIS_TAG)" == "" && $? == 0'
 - provider: script
   script: ./.travis/deploy.sh base-debian $TRAVIS_TAG
   skip_cleanup: true
   on:
     tags: true
-    condition: '"$(.travis/is_release_tag.sh base-debian $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
-- provider: script
-  script: ./.travis/all_platforms_deploy.sh scala-stream-collector $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh scala-stream-collector $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
-- provider: script
-  script: ./.travis/all_platforms_deploy.sh stream-enrich $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh stream-enrich $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
-- provider: script
-  script: ./.travis/deploy.sh s3-loader $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh s3-loader $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
-- provider: script
-  script: ./.travis/deploy.sh elasticsearch-loader $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh elasticsearch-loader $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
-- provider: script
-  script: ./.travis/deploy.sh iglu-server $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh iglu-server $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
-- provider: script
-  script: ./.travis/deploy.sh igluctl $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh igluctl $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
+    condition: '"$(.travis/is_release_tag.sh base-debian $TRAVIS_TAG)" == "" && $? == 0'
 - provider: script
   script: ./.travis/deploy.sh piinguin-server $TRAVIS_TAG
   skip_cleanup: true
   on:
     tags: true
-    condition: '"$(.travis/is_release_tag.sh piinguin-server $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
+    condition: '"$(.travis/is_release_tag.sh piinguin-server $TRAVIS_TAG)" == "" && $? == 0'
 - provider: script
   script: ./.travis/deploy.sh emr-etl-runner $TRAVIS_TAG
   skip_cleanup: true
   on:
     tags: true
-    condition: '"$(.travis/is_release_tag.sh emr-etl-runner $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
+    condition: '"$(.travis/is_release_tag.sh emr-etl-runner $TRAVIS_TAG)" == "" && $? == 0'
 - provider: script
   script: ./.travis/deploy.sh k8s-dataflow $TRAVIS_TAG
   skip_cleanup: true
