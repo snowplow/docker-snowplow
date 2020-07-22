@@ -1,5 +1,8 @@
 #!/bin/sh
 
+alias gcloud=/snowplow/google-cloud-sdk/bin/gcloud
+alias gsutil=/snowplow/google-cloud-sdk/bin/gsutil
+
 DELAY=3
 THRESHOLD=5
 BUCKET=""
@@ -41,6 +44,10 @@ if [ -z "$BUCKET" ]; then
 fi
 
 echo "params: ${PARAMS} threshold: ${THRESHOLD} delay: ${DELAY} GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS:-Not Available}"
+echo "which gcloud: "
+which gcloud
+echo "whoami: "
+whoami
 
 # enable service account if credentials are available
 if [ -z "${GOOGLE_APPLICATION_CREDENTIALS}" ]; then
