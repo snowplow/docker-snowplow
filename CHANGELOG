@@ -1,3 +1,10 @@
+Release 18 (2020-07-24)
+-----------------------
+Update travis not to build pipeline components (#142)
+Fix permission issue in k8s-dataflow (#140)
+Add support for beam-enrich CLI params in k8s-dataflow (#137)
+add image for k8s-based dataflow deployment
+
 Release 17 (2019-06-13)
 -----------------------
 Align deployment for base images (#132)
