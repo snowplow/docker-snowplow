@@ -1,4 +1,4 @@
-FROM openjdk:8u171-jre-slim
+FROM openjdk:8u265-jre-slim
 LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 # Snowplow components will be installed in this folder.
@@ -16,9 +16,9 @@ RUN addgroup snowplow && \
 RUN apt-get update && \
     apt-get install -y ca-certificates wget gnupg && \
     rm -rf /var/lib/apt/lists && \
-    wget https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64.deb && \
+    wget https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64.deb && \
     dpkg -i dumb-init_*.deb && \
-    export GOSU_VERSION=1.10 && \
+    export GOSU_VERSION=1.12 && \
     wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-amd64" && \
     wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-amd64.asc" && \
     export GNUPGHOME="$(mktemp -d)" && \

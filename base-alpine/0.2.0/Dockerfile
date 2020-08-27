@@ -1,4 +1,4 @@
-FROM openjdk:8u171-jre-alpine
+FROM openjdk:8u212-jre-alpine
 LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 # Snowplow components will be installed in this folder.
