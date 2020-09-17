@@ -25,13 +25,13 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    condition: '"$(.travis/is_release_tag.sh base-alpine $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.0'
+    condition: '"$(.travis/is_release_tag.sh base-alpine $TRAVIS_TAG)" == "" && $? == 0'
 - provider: script
   script: ./.travis/deploy.sh base-debian $TRAVIS_TAG
   skip_cleanup: true
   on:
     tags: true
-    condition: '"$(.travis/is_release_tag.sh base-debian $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-debian/0.2.0'
+    condition: '"$(.travis/is_release_tag.sh base-debian $TRAVIS_TAG)" == "" && $? == 0'
 - provider: script
   script: ./.travis/deploy.sh piinguin-server $TRAVIS_TAG
   skip_cleanup: true
