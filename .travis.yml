@@ -32,7 +32,7 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    condition: '"$(.travis/is_release_tag.sh base-debian/0.1.1 $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-debian/0.1.1'
+    condition: '"$(.travis/is_release_tag.sh base-debian/0.1.1-rc1 $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-debian/0.1.1'
 - provider: script
   script: ./.travis/deploy.sh base-debian $TRAVIS_TAG
   skip_cleanup: true
