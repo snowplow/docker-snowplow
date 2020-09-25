@@ -1,4 +1,4 @@
-FROM snowplow-docker-registry.bintray.io/snowplow/base-alpine:0.2.0
+FROM snowplow-docker-registry.bintray.io/snowplow/base-alpine:0.2.1
 LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 # The version of stream enrich to download.

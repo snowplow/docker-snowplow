@@ -1,4 +1,4 @@
-FROM snowplow-docker-registry.bintray.io/snowplow/base-debian:0.1.0
+FROM snowplow-docker-registry.bintray.io/snowplow/base-debian:0.1.1
 LABEL maintainer="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 # The version of the server to download

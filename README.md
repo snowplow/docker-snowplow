@@ -54,8 +54,8 @@ Alternatively, you can build them yourself:
 
 ```bash
 # All images are based on the base images
-docker pull snowplow-docker-registry.bintray.io/snowplow/base-alpine:0.2.0
-docker pull snowplow-docker-registry.bintray.io/snowplow/base-debian:0.1.0
+docker pull snowplow-docker-registry.bintray.io/snowplow/base-alpine:0.2.1
+docker pull snowplow-docker-registry.bintray.io/snowplow/base-debian:0.1.1
 
 # NSQ Scala Stream Collector image, there are others available for Kinesis, Kafka and Google PubSub
 docker build -t snowplow/scala-stream-collector-nsq:0.15.0 scala-stream-collector/0.15.0/nsq
