@@ -1,59 +1,17 @@
-services:
-- docker
-script:
-- cd $IMG
-- docker build -t $IMG .
-# container name can't contain / so we replace it with -
-- docker run -d --name ${IMG//\//-} $IMG
-- docker ps | grep -q ${IMG//\//-}
-- cd ${TRAVIS_BUILD_DIR}
-env:
-  matrix:
-  - IMG=base-alpine/0.2.1
-  - IMG=base-debian/0.1.1
-  - IMG=base-debian/0.2.1
-  - IMG=piinguin-server/0.1.1
-  - IMG=emr-etl-runner/r114_polonnaruwa
-  - IMG=k8s-dataflow/0.2.0
-  global:
-  # BINTRAY_SNOWPLOW_DOCKER_USER
-  - secure: IcBMTopBAIzGlWNgS7dw0iNmvFhd2dgSn/Y1mt6hXnzLrr7SDryRuxPqemsCBLIlf4xtpgHvuOoo+7jYywtAOqyHQ+EOnR5eU8/28v+Z8zd/Djnw0Sv10RV5oMS6ejh9gGS4WDNPvf9M1sfP5p+0gA0p68dNeObLDT4TwpG2pdpeEuqQ3RMGCQc+tb3Q26K6aUPXeIgAHUyIEgHtzxxfgrGNwSmxdb6npsWTUttKpQkJudGRk17xXW67Dd0PKLWJkDpien/lbkLIBK8MlwaH03NMawGcTChgM2njcqElqz1b46wxl1ATcVV2T7A6YPYZxb012P8j/KUZ6MLhdDFNhmz/jIk6caEZ3x4AH2Q0qN8C9Hn70yMN8gAliBeUN4pjLpKnD8t5HgCE+90EufppcQRCfCJhSk9xmegTaikan3QZCN09vwSctIBu4AeWYqctql6bLhNWguakbRIyk9feogmxqbn2HSoFpRrAEqXXv9jFKJrKm2UNKuLbXCvyoYqjAhxTPn7OMAY30wqsVSUu5gSt1fO0Pd+5H8yq44Ul3jROgYKM5NlLWUY+u8qp6KKm2zXQ2LFlr8rzZ2ar5pI9zZiABDMnRRUdAXDTnpDw2HtBvngGXhyfr/irrzach0z/f5YwHL7WVf9Wu7MqoVpexdDqThNGip4ansIikrC57LE=
-  # BINTRAY_SNOWPLOW_DOCKER_API_KEY
-  - secure: NE8WvLzRlwdZolN8RLEL2xphxkC3gbxuoUCWea/mR7KsfZ2MpmN8Mzo+QQj+NnNG+B8NXAbTO0Z4v+wKTtHNdX+6SAegyzBCjmIh20l93aqDoIAllmN/N66sAJ9p+gNltEDG2xatN1OWyapigNIMq3TOK+bFvGKoMZZpBH47KMmlM6z26MjOisWwkpatZ7SOweVe58qOFuqvq98dhyO4erVTq8oL9exyS6iF6uKOJPfvetUJse0uZfgn1DpbXEdLy/erQ1vj3JwOb+Z/BrceUuFW/+6UGpuhK8K9u9i8AUJyv0dZKxu4DPflBqZDzDSEg3rdXMf+i4W2mN5KE0D477erIZBniiToa63gWDQAxN+zrpXe+xlDBRe9JIy9qe2RBsYA7Ec56rtRwWcRAAFz836ZmRqLSQQw6EKjmDjdP9n31xQvuUQFxwzfbWmApgH4ahC/nfGfviK8s09piPtecr653/FR20PyH50jhTH8aARXCkY6mQf0Nxss9IgqLUUHJ/INzs3gDHbaErlzU1N8gYea0V2lt8RF4+oYMDw90zZmXOBLeCkO7Sy3NqCl7Xg4CwGOKYK1lniI2x6MXaWEkZLTa4H4FyOZuCXGV2vk7KStmOqWeHtWh1+w6H6er/NLv20bsrV7TihpM02B7OkWIyt9Jf4bw+KKMeVsoGBwwXg=
+os: linux
+dist: focal
+services: docker
+
 deploy:
-- provider: script
-  script: ./.travis/deploy.sh base-alpine $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh base-alpine/0.2.1 $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-alpine/0.2.1'
-- provider: script
-  script: ./.travis/deploy.sh base-debian $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh base-debian/0.1.1 $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-debian/0.1.1'
-- provider: script
-  script: ./.travis/deploy.sh base-debian $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh base-debian/0.2.1 $TRAVIS_TAG)" == "" && $? == 0 && $IMG = base-debian/0.2.1'
-- provider: script
-  script: ./.travis/deploy.sh piinguin-server $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh piinguin-server/0.1.1 $TRAVIS_TAG)" == "" && $? == 0 && $IMG = piinguin-server/0.1.1'
-- provider: script
-  script: ./.travis/deploy.sh emr-etl-runner $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh emr-etl-runner/r114_polonnaruwa $TRAVIS_TAG)" == "" && $? == 0 && $IMG = emr-etl-runner/r114_polonnaruwa'
-- provider: script
-  script: ./.travis/deploy.sh k8s-dataflow $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    tags: true
-    condition: '"$(.travis/is_release_tag.sh k8s-dataflow/0.2.0 $TRAVIS_TAG)" == "" && $? == 0 && $IMG = k8s-dataflow/0.2.0'
+  - provider: script
+    script: ./.travis/deploy.sh $TRAVIS_TAG
+    skip_cleanup: true
+    on:
+      tags: true
+      condition: '"$(.travis/is_release_tag.sh $TRAVIS_TAG)" == "" && $? == 0'
+
+env:
+  global:
+  - secure: IcBMTopBAIzGlWNgS7dw0iNmvFhd2dgSn/Y1mt6hXnzLrr7SDryRuxPqemsCBLIlf4xtpgHvuOoo+7jYywtAOqyHQ+EOnR5eU8/28v+Z8zd/Djnw0Sv10RV5oMS6ejh9gGS4WDNPvf9M1sfP5p+0gA0p68dNeObLDT4TwpG2pdpeEuqQ3RMGCQc+tb3Q26K6aUPXeIgAHUyIEgHtzxxfgrGNwSmxdb6npsWTUttKpQkJudGRk17xXW67Dd0PKLWJkDpien/lbkLIBK8MlwaH03NMawGcTChgM2njcqElqz1b46wxl1ATcVV2T7A6YPYZxb012P8j/KUZ6MLhdDFNhmz/jIk6caEZ3x4AH2Q0qN8C9Hn70yMN8gAliBeUN4pjLpKnD8t5HgCE+90EufppcQRCfCJhSk9xmegTaikan3QZCN09vwSctIBu4AeWYqctql6bLhNWguakbRIyk9feogmxqbn2HSoFpRrAEqXXv9jFKJrKm2UNKuLbXCvyoYqjAhxTPn7OMAY30wqsVSUu5gSt1fO0Pd+5H8yq44Ul3jROgYKM5NlLWUY+u8qp6KKm2zXQ2LFlr8rzZ2ar5pI9zZiABDMnRRUdAXDTnpDw2HtBvngGXhyfr/irrzach0z/f5YwHL7WVf9Wu7MqoVpexdDqThNGip4ansIikrC57LE=
+  - secure: NE8WvLzRlwdZolN8RLEL2xphxkC3gbxuoUCWea/mR7KsfZ2MpmN8Mzo+QQj+NnNG+B8NXAbTO0Z4v+wKTtHNdX+6SAegyzBCjmIh20l93aqDoIAllmN/N66sAJ9p+gNltEDG2xatN1OWyapigNIMq3TOK+bFvGKoMZZpBH47KMmlM6z26MjOisWwkpatZ7SOweVe58qOFuqvq98dhyO4erVTq8oL9exyS6iF6uKOJPfvetUJse0uZfgn1DpbXEdLy/erQ1vj3JwOb+Z/BrceUuFW/+6UGpuhK8K9u9i8AUJyv0dZKxu4DPflBqZDzDSEg3rdXMf+i4W2mN5KE0D477erIZBniiToa63gWDQAxN+zrpXe+xlDBRe9JIy9qe2RBsYA7Ec56rtRwWcRAAFz836ZmRqLSQQw6EKjmDjdP9n31xQvuUQFxwzfbWmApgH4ahC/nfGfviK8s09piPtecr653/FR20PyH50jhTH8aARXCkY6mQf0Nxss9IgqLUUHJ/INzs3gDHbaErlzU1N8gYea0V2lt8RF4+oYMDw90zZmXOBLeCkO7Sy3NqCl7Xg4CwGOKYK1lniI2x6MXaWEkZLTa4H4FyOZuCXGV2vk7KStmOqWeHtWh1+w6H6er/NLv20bsrV7TihpM02B7OkWIyt9Jf4bw+KKMeVsoGBwwXg=
+ 

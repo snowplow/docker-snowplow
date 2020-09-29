@@ -8,7 +8,7 @@ The best place to ask general questions or ask for community support is
 
 -->
 
-**Docker image**: <!-- e.g. Stream Enrich, Scala Stream Collector -->
+**Docker image**: <!-- e.g. base-debian -->
 
 **Version**:
 
