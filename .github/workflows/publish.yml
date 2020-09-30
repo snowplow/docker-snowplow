@@ -20,35 +20,47 @@ jobs:
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
 
-    - name: Publish base-alpine to Docker Hub
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push base-alpine
       if: startsWith(github.ref, 'refs/tags/base-alpine/')
-      uses: whoan/docker-build-with-cache-action@v5
+      uses: docker/build-push-action@v2
       with:
-        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
-        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
-        registry: snowplow-docker-registry.bintray.io
-        image_name: snowplow/base-alpine
-        image_tag: latest,${{ steps.get_version.outputs.VERSION }}
-        dockerfile: base-alpine/Dockerfile
+        file: base-alpine/Dockerfile
+        platforms: linux/amd64
+        push: true
+        tags: |
+          base-alpine:latest
+          base-alpine:${{ steps.get_version.outputs.VERSION }}
 
-    - name: Publish base-debian to Docker Hub
+    - name: Build and push base-debian
       if: startsWith(github.ref, 'refs/tags/base-debian/')
-      uses: whoan/docker-build-with-cache-action@v5
+      uses: docker/build-push-action@v2
       with:
-        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
-        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
-        registry: snowplow-docker-registry.bintray.io
-        image_name: snowplow/base-debian
-        image_tag: latest,${{ steps.get_version.outputs.VERSION }}
-        dockerfile: base-debian/Dockerfile
+        file: base-debian/Dockerfile
+        platforms: linux/amd64
+        push: true
+        tags: |
+          base-debian:latest
+          base-debian:${{ steps.get_version.outputs.VERSION }}
 
-    - name: Publish k8s-dataflow to Docker Hub
+    - name: Build and push k8s-dataflow
       if: startsWith(github.ref, 'refs/tags/k8s-dataflow/')
-      uses: whoan/docker-build-with-cache-action@v5
+      uses: docker/build-push-action@v2
       with:
-        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
-        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
-        registry: snowplow-docker-registry.bintray.io
-        image_name: snowplow/k8s-dataflow
-        image_tag: latest,${{ steps.get_version.outputs.VERSION }}
-        dockerfile: k8s-dataflow/Dockerfile
+        file: k8s-dataflow/Dockerfile
+        platforms: linux/amd64
+        push: true
+        tags: |
+          k8s-dataflow:latest
+          k8s-dataflow:${{ steps.get_version.outputs.VERSION }}
