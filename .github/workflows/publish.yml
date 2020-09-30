@@ -20,35 +20,38 @@ jobs:
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
 
-    - name: Publish base-alpine to Docker Hub
+    - name: Build and push base-alpine
       if: startsWith(github.ref, 'refs/tags/base-alpine/')
-      uses: whoan/docker-build-with-cache-action@v5
+      uses: docker/build-push-action@v1
       with:
-        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
-        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
-        registry: snowplow-docker-registry.bintray.io
-        image_name: snowplow/base-alpine
-        image_tag: latest,${{ steps.get_version.outputs.VERSION }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: snowplow/base-alpine
         dockerfile: base-alpine/Dockerfile
+        path: base-alpine
+        tags: latest,${{ steps.get_version.outputs.VERSION }}
+        push: true
 
-    - name: Publish base-debian to Docker Hub
+    - name: Build and push base-debian
       if: startsWith(github.ref, 'refs/tags/base-debian/')
-      uses: whoan/docker-build-with-cache-action@v5
+      uses: docker/build-push-action@v1
       with:
-        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
-        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
-        registry: snowplow-docker-registry.bintray.io
-        image_name: snowplow/base-debian
-        image_tag: latest,${{ steps.get_version.outputs.VERSION }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: snowplow/base-debian
         dockerfile: base-debian/Dockerfile
+        path: base-debian
+        tags: latest,${{ steps.get_version.outputs.VERSION }}
+        push: true
 
-    - name: Publish k8s-dataflow to Docker Hub
+    - name: Build and push k8s-dataflow
       if: startsWith(github.ref, 'refs/tags/k8s-dataflow/')
-      uses: whoan/docker-build-with-cache-action@v5
+      uses: docker/build-push-action@v1
       with:
-        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
-        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
-        registry: snowplow-docker-registry.bintray.io
-        image_name: snowplow/k8s-dataflow
-        image_tag: latest,${{ steps.get_version.outputs.VERSION }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: snowplow/k8s-dataflow
         dockerfile: k8s-dataflow/Dockerfile
+        path: k8s-dataflow
+        tags: latest,${{ steps.get_version.outputs.VERSION }}
+        push: true

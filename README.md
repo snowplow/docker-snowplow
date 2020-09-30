@@ -6,11 +6,9 @@
 
 This repository contains the Dockerfiles of base images we use at Snowplow:
 
-- base-alpine
-- base-debian
-- k8s-dataflow
-
-They are published in the [`snowplow-docker-registry.bintray.io`][registry] docker registry.
+- [base-alpine][base-alpine]
+- [base-debian][base-debian]
+- [k8s-dataflow][k8s-dataflow]
 
 ## Pulling
 
@@ -18,13 +16,13 @@ You can pull the images from the registry directly:
 
 ```bash
 # base-alpine
-docker pull snowplow-docker-registry.bintray.io/snowplow/base-alpine:0.2.1
+docker pull snowplow/base-alpine
 
 # base-debian
-docker pull snowplow-docker-registry.bintray.io/snowplow/base-debian:0.2.1
+docker pull snowplow/base-debian
 
 # k8s-dataflow
-docker pull snowplow-docker-registry.bintray.io/snowplow/k8s-dataflow:0.2.0
+docker pull snowplow/k8s-dataflow
 ```
 
 ## Building
@@ -33,13 +31,13 @@ Alternatively, you can build them yourself:
 
 ```bash
 # base-alpine
-docker build -t snowplow/base-alpine:0.2.1 base-alpine
+docker build -t snowplow/base-alpine:latest base-alpine
 
 # base-debian
-docker build -t snowplow/base-debian:0.2.1 base-debian
+docker build -t snowplow/base-debian:latest base-debian
 
 # k8s-dataflow
-docker build -t snowplow/k8s-dataflow:0.2.0 k8s-dataflow
+docker build -t snowplow/k8s-dataflow:latest k8s-dataflow
 ```
 
 ## Copyright and license
@@ -55,7 +53,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-[registry]: https://bintray.com/snowplow/registry
+[license-image]: https://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
+[license]: https://www.apache.org/licenses/LICENSE-2.0
 
-[license-image]: http://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
-[license]: http://www.apache.org/licenses/LICENSE-2.0
+[base-alpine]: https://hub.docker.com/r/snowplow/base-alpine
+
+[base-debian]: https://hub.docker.com/r/snowplow/base-debian
+
+[k8s-dataflow]: https://hub.docker.com/r/snowplow/k8s-dataflow
