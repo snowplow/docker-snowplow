@@ -1,6 +1,5 @@
 # Snowplow Docker
 
-[![Build Status][travis-image]][travis]
 [![License][license-image]][license]
 
 ## Introduction
@@ -57,9 +56,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 [registry]: https://bintray.com/snowplow/registry
-
-[travis-image]: https://travis-ci.org/snowplow/snowplow-docker.png?branch=master
-[travis]: http://travis-ci.org/snowplow/snowplow-docker
 
 [license-image]: http://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: http://www.apache.org/licenses/LICENSE-2.0

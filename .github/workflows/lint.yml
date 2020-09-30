@@ -1,0 +1,27 @@
+name: Lint Dockerfiles
+
+on: push
+
+jobs:
+  lint:
+    name: Lint Dockerfiles
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Lint base-alpine
+      uses: brpaz/hadolint-action@master
+      with:
+        dockerfile: base-alpine/Dockerfile
+
+    - name: Lint base-debian
+      uses: brpaz/hadolint-action@master
+      with:
+        dockerfile: base-debian/Dockerfile
+
+    - name: Lint k8s-dataflow
+      uses: brpaz/hadolint-action@master
+      with:
+        dockerfile: k8s-dataflow/Dockerfile

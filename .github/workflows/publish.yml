@@ -1,0 +1,54 @@
+name: Publish images to Docker Hub
+
+on:
+  push:
+    tags:
+      - base-alpine/*
+      - base-debian/*
+      - k8s-dataflow/*
+
+jobs:
+  publish:
+    name: Publish images to Docker Hub
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Extract release version from ref
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
+
+    - name: Publish base-alpine to Docker Hub
+      if: startsWith(github.ref, 'refs/tags/base-alpine/')
+      uses: whoan/docker-build-with-cache-action@v5
+      with:
+        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
+        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
+        registry: snowplow-docker-registry.bintray.io
+        image_name: snowplow/base-alpine
+        image_tag: latest,${{ steps.get_version.outputs.VERSION }}
+        dockerfile: base-alpine/Dockerfile
+
+    - name: Publish base-debian to Docker Hub
+      if: startsWith(github.ref, 'refs/tags/base-debian/')
+      uses: whoan/docker-build-with-cache-action@v5
+      with:
+        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
+        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
+        registry: snowplow-docker-registry.bintray.io
+        image_name: snowplow/base-debian
+        image_tag: latest,${{ steps.get_version.outputs.VERSION }}
+        dockerfile: base-debian/Dockerfile
+
+    - name: Publish k8s-dataflow to Docker Hub
+      if: startsWith(github.ref, 'refs/tags/k8s-dataflow/')
+      uses: whoan/docker-build-with-cache-action@v5
+      with:
+        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
+        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
+        registry: snowplow-docker-registry.bintray.io
+        image_name: snowplow/k8s-dataflow
+        image_tag: latest,${{ steps.get_version.outputs.VERSION }}
+        dockerfile: k8s-dataflow/Dockerfile
