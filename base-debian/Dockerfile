@@ -14,14 +14,15 @@ RUN addgroup snowplow && \
 # https://github.com/yelp/dumb-init: lightweight init system
 # https://github.com/tianon/gosu/: sudo replacement
 RUN apt-get update && \
-    apt-get install -y ca-certificates wget gnupg && \
+    apt-get install -y --no-install-recommends ca-certificates=20200601~deb10u1 wget=1.20.1-1.1 gnupg=2.2.12-1+deb10u1 && \
     rm -rf /var/lib/apt/lists && \
     wget https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64.deb && \
     dpkg -i dumb-init_*.deb && \
     export GOSU_VERSION=1.12 && \
     wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-amd64" && \
     wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-amd64.asc" && \
-    export GNUPGHOME="$(mktemp -d)" && \
+    GNUPGHOME="$(mktemp -d)" && \
+    export GNUPGHOME && \
     for server in $(shuf -e ha.pool.sks-keyservers.net \
                             hkp://p80.pool.sks-keyservers.net:80 \
                             keyserver.ubuntu.com \
