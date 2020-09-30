@@ -24,9 +24,8 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/base-alpine/')
       uses: whoan/docker-build-with-cache-action@v5
       with:
-        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
-        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
-        registry: snowplow-docker-registry.bintray.io
+        username: "${{ secrets.DOCKER_USERNAME }}"
+        password: "${{ secrets.DOCKER_PASSWORD }}"
         image_name: snowplow/base-alpine
         image_tag: latest,${{ steps.get_version.outputs.VERSION }}
         dockerfile: base-alpine/Dockerfile
@@ -35,9 +34,8 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/base-debian/')
       uses: whoan/docker-build-with-cache-action@v5
       with:
-        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
-        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
-        registry: snowplow-docker-registry.bintray.io
+        username: "${{ secrets.DOCKER_USERNAME }}"
+        password: "${{ secrets.DOCKER_PASSWORD }}"
         image_name: snowplow/base-debian
         image_tag: latest,${{ steps.get_version.outputs.VERSION }}
         dockerfile: base-debian/Dockerfile
@@ -46,9 +44,8 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/k8s-dataflow/')
       uses: whoan/docker-build-with-cache-action@v5
       with:
-        username: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_USER }}"
-        password: "${{ secrets.BINTRAY_SNOWPLOW_DOCKER_API_KEY }}"
-        registry: snowplow-docker-registry.bintray.io
+        username: "${{ secrets.DOCKER_USERNAME }}"
+        password: "${{ secrets.DOCKER_PASSWORD }}"
         image_name: snowplow/k8s-dataflow
         image_tag: latest,${{ steps.get_version.outputs.VERSION }}
         dockerfile: k8s-dataflow/Dockerfile
