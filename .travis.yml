@@ -2,6 +2,16 @@ os: linux
 dist: focal
 services: docker
 
+install:
+  - export HADOLINT="$HOME/hadolint"
+  - curl -sL -o "$HADOLINT" "https://github.com/hadolint/hadolint/releases/download/v1.18.0/hadolint-$(uname -s)-$(uname -m)" && chmod 700 "$HADOLINT" && chmod +x "$HADOLINT"
+  - $HADOLINT -v
+
+script:
+  - $HADOLINT $TRAVIS_BUILD_DIR/base-alpine/Dockerfile
+  - $HADOLINT $TRAVIS_BUILD_DIR/base-debian/Dockerfile
+  - $HADOLINT $TRAVIS_BUILD_DIR/k8s-dataflow/Dockerfile
+
 deploy:
   - provider: script
     script: ./.travis/deploy.sh $TRAVIS_TAG
