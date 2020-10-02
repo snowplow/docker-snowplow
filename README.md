@@ -10,6 +10,8 @@ This repository contains the Dockerfiles of base images we use at Snowplow:
 - [base-debian][base-debian]
 - [k8s-dataflow][k8s-dataflow]
 
+**Note that** we migrated the maintenance of Dockerfiles for pipeline components from this repository to projects' own repositories.
+
 ## Pulling
 
 You can pull the images from the registry directly:
