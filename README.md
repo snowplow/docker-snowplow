@@ -12,6 +12,8 @@ This repository contains the Dockerfiles of base images we use at Snowplow:
 
 They are published in the [`snowplow-docker-registry.bintray.io`][registry] docker registry.
 
+**Note that** we migrated the maintenance of Dockerfiles for pipeline components from this repository to projects' own repositories.
+
 ## Pulling
 
 You can pull the images from the registry directly:
