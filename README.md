@@ -6,9 +6,11 @@
 
 This repository contains the Dockerfiles of base images we use at Snowplow:
 
-- [base-alpine][base-alpine]
-- [base-debian][base-debian]
-- [k8s-dataflow][k8s-dataflow]
+- [base-alpine][base-alpine]: Base image of Snowplow apps targeting JDK 8. It is based on Alpine Linux which results in much slimmer images compared to `base-debian`.
+- [base-debian][base-debian]: Base image of Snowplow apps targeting JDK 11. It is based on Debian Buster variant of `openjdk:11` image.
+- [k8s-dataflow][k8s-dataflow]: Base image of GCP Dataflow apps at Snowplow. It is based on `base-debian` and comes with prerequisite checks necessary to run a Dataflow job.
+
+**Note that** we migrated the maintenance of Dockerfiles for pipeline components from this repository to projects' own repositories.
 
 ## Pulling
 
