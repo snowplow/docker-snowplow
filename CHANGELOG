@@ -1,3 +1,14 @@
+Release 20 (2020-10-29)
+-----------------------
+Fix unsigned repository issue of GCP SDK (#154)
+Make k8s-dataflow based on JDK11 (#153)
+Add migration note to README (#139)
+Migrate from Bintray to Docker Hub (#151)
+Migrate from Travis to Github Actions (#152)
+Fix linting issues (#150)
+Integrate hadolint (#149)
+Remove all non-maintained images from the repository (#147)
+
 Release 19 (2020-09-18)
 -----------------------
 Bump base images of base images (#144)
