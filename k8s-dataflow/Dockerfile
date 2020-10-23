@@ -1,4 +1,4 @@
-FROM snowplow/base-debian:0.2.2
+FROM snowplow/base-debian:0.2.2-rc1
 LABEL MAINTAINER="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
