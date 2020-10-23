@@ -1,4 +1,4 @@
-FROM snowplow-docker-registry.bintray.io/snowplow/base-debian:0.1.0
+FROM snowplow/base-debian:0.2.2
 LABEL MAINTAINER="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
