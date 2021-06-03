@@ -9,6 +9,11 @@ jobs:
   publish:
     name: Publish images to Docker Hub
     runs-on: ubuntu-latest
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
 
     steps:
     - name: Checkout code
@@ -23,11 +28,32 @@ jobs:
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
+      with:
+        driver-opts: network=host
 
     - name: Build base-alpine
       uses: docker/build-push-action@v2
       with:
         context: base-alpine
         file: base-alpine/Dockerfile
+        platforms: linux/amd64,linux/arm64/v8
         tags: snowplow/base-alpine:dev
+        push: false
+
+    - name: Build base-debian and push to local registry
+      uses: docker/build-push-action@v2
+      with:
+        context: base-debian
+        file: base-debian/Dockerfile
+        platforms: linux/amd64,linux/arm64/v8
+        tags: localhost:5000/snowplow/base-debian:dev
+        push: true
+
+    - name: Build k8s-dataflow
+      uses: docker/build-push-action@v2
+      with:
+        context: k8s-dataflow
+        file: k8s-dataflow/Dockerfile
+        platforms: linux/amd64,linux/arm64/v8
+        tags: snowplow/k8s-dataflow:dev
         push: false

@@ -1,12 +1,13 @@
-FROM snowplow/base-debian:0.2.2
+FROM localhost:5000/snowplow/base-debian:dev
 LABEL MAINTAINER="Snowplow Analytics Ltd. <support@snowplowanalytics.com>"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN \
   apt-get update &&\
+  echo `apt --version` &&\
   echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list &&\
-  apt-get install -y --no-install-recommends apt-transport-https=1.8.2.1 ca-certificates=20200601~deb10u1 gnupg=2.2.12-1+deb10u1 curl=7.64.0-4+deb10u1 &&\
+  apt-get install -y --no-install-recommends ca-certificates=20200601~deb10u1 gnupg=2.2.12-1+deb10u1 curl=7.64.0-4+deb10u1 &&\
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - &&\
   apt-get update &&\
   apt-get install -y --no-install-recommends google-cloud-sdk=316.0.0-0 &&\

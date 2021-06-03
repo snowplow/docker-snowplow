@@ -16,11 +16,13 @@ RUN addgroup snowplow && \
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates=20200601~deb10u1 wget=1.20.1-1.1 gnupg=2.2.12-1+deb10u1 && \
     rm -rf /var/lib/apt/lists && \
-    wget https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64.deb && \
+    export ARCHITECTURE=`dpkg --print-architecture` && \
+    export DUMB_INIT_VERSION=1.2.5 && \
+    wget "https://github.com/Yelp/dumb-init/releases/download/v${DUMB_INIT_VERSION}/dumb-init_${DUMB_INIT_VERSION}_${ARCHITECTURE}.deb" && \
     dpkg -i dumb-init_*.deb && \
     export GOSU_VERSION=1.12 && \
-    wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-amd64" && \
-    wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-amd64.asc" && \
+    wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-${ARCHITECTURE}" && \
+    wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-${ARCHITECTURE}.asc" && \
     GNUPGHOME="$(mktemp -d)" && \
     export GNUPGHOME && \
     for server in $(shuf -e ha.pool.sks-keyservers.net \
