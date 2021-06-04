@@ -14,7 +14,7 @@ RUN addgroup snowplow && \
 # https://github.com/yelp/dumb-init: lightweight init system
 # https://github.com/tianon/gosu/: sudo replacement
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates=20200601~deb10u1 wget=1.20.1-1.1 gnupg=2.2.12-1+deb10u1 && \
+    apt-get install -y --no-install-recommends ca-certificates=20200601~deb10u2 wget=1.20.1-1.1 gnupg=2.2.12-1+deb10u1 && \
     rm -rf /var/lib/apt/lists && \
     export ARCHITECTURE=`dpkg --print-architecture` && \
     export DUMB_INIT_VERSION=1.2.5 && \
