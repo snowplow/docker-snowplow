@@ -2,18 +2,15 @@ name: Publish images to Docker Hub
 
 on:
   push:
-    branches:
-      - hackathon
+    tags:
+      - base-alpine/*
+      - base-debian/*
+      - k8s-dataflow/*
 
 jobs:
   publish:
     name: Publish images to Docker Hub
-    runs-on: ubuntu-latest
-    services:
-      registry:
-        image: registry:2
-        ports:
-          - 5000:5000
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout code
@@ -28,32 +25,39 @@ jobs:
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
       with:
-        driver-opts: network=host
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build base-alpine
+      if: startsWith(github.ref, 'refs/tags/base-alpine/')
       uses: docker/build-push-action@v2
       with:
         context: base-alpine
         file: base-alpine/Dockerfile
         platforms: linux/amd64,linux/arm64/v8
-        tags: snowplow/base-alpine:dev
-        push: false
+        tags: snowplow/base-alpine:${{ steps.get_version.outputs.VERSION }}
+        push: true
 
-    - name: Build base-debian and push to local registry
+    - name: Build base-debian
+      if: startsWith(github.ref, 'refs/tags/base-debian/')
       uses: docker/build-push-action@v2
       with:
         context: base-debian
         file: base-debian/Dockerfile
         platforms: linux/amd64,linux/arm64/v8
-        tags: localhost:5000/snowplow/base-debian:dev
+        tags: snowplow/base-debian:${{ steps.get_version.outputs.VERSION }}
         push: true
 
     - name: Build k8s-dataflow
+      if: startsWith(github.ref, 'refs/tags/k8s-dataflow/')
       uses: docker/build-push-action@v2
       with:
         context: k8s-dataflow
         file: k8s-dataflow/Dockerfile
         platforms: linux/amd64,linux/arm64/v8
-        tags: snowplow/k8s-dataflow:dev
-        push: false
+        tags: snowplow/k8s-dataflow:${{ steps.get_version.outputs.VERSION }}
+        push: true
